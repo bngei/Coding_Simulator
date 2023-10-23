@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Clicker Simulator</title>
+    
+</head>
+<body>
+    <div class="total_display">
+        <p>0</p>
+    </div>
+
+    <div class="passive_display">
+        <p>0 per second</p>
+    </div>
+
+    <div class="container">
+
+        <div class="clicker_container">
+            <button class="clicker_button" onclick="clickingIncrementor()">
+                <img class="money_image" src="Images/money_image.png" alt="We have no money right now">
+            </button>
+        </div>
+    
+        
+        <div class="passive_container">
+            <button class="lemonade_stand" onclick="passiveIncrementor('lemonade_stand'); outputCost('lemonade_stand')">
+                <img class="lemonade_image" src="Images/Lemonade Stand.jpg" alt="Lemonade Stand">
+            </button>
+            <p>Cost <span class="lemonade_cost"></span></p>
+
+            <button class="newspaper_delivery" onclick="passiveIncrementor('newspaper_delivery')">
+                <img class="newspaper_image" src="Images/Newspaper Delivery.jpg" alt="Newspaper Delivery">
+            </button>
+            <p>Cost <span class="newspaper_cost"></span></p>
+        </div>
+
+    </div>
+    
+
+
+    <script src="script.js"></script>
+    <script> 
+        passiveImplementation()
+        outputCost('lemonade_stand')
+        outputCost('newspaper_delivery')
+    </script>
+</body>
+</html>
