@@ -16,6 +16,7 @@ body {
     font-size: 50px;
 }
 
+
 .passive_display {
     display: flex;
     flex-direction: column;
@@ -24,19 +25,110 @@ body {
     font-size: 20px;
 }
 
-.container {
+
+.game {
     display: flex;
     gap: 20px;
+    height: auto;
 }
+
 
 .clicker_container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    height: auto;
 }
 
-.passive_container img {
-    height: 150px;
 
+.button_container {
+    padding-bottom: 20px;
+}
+
+
+.shop_button {
+   background-color:burlywood;
+}
+
+
+.ide_textbox {
+    height: 100px;
+    
+}
+
+
+.active_container {
+    flex-direction: column;
+    width:min-content;
+}
+
+
+.active_container button {
+    margin: 5px;
+}
+
+
+.passive_container {
+    flex-wrap: wrap;
+    display: none;
+}
+
+
+.passive_container div {
+    margin: 5px;
+}
+
+
+.basic_website_image {
+    width: 150px;
+}
+
+
+.to_do_list_image {
+    width: 150px;
+}
+
+
+.weather_app_image {
+    width: 150px;
+}
+
+
+.portfolio_website_image {
+    width: 150px;
+}   
+
+
+.blog_platform_image {
+    width: 150px;
+}   
+
+
+.e_commerce_website_image {
+    width: 150px;
+}
+
+
+.mobile_app_image {
+    width: 150px;
+}
+
+
+.social_media_platform_image {
+    width: 150px;
+}
+
+
+.video_game_image {
+    width: 150px;
+}
+
+
+.search_engine_image {
+    width: 150px;
+}
+
+
+.operating_system_image {
+    width: 150px;
 }

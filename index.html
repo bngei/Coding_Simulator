@@ -4,48 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Clicker Simulator</title>
-    
+    <link rel="icon" href="Images/money_image.png">
+    <title>Coding Simulator</title>
 </head>
 <body>
     <div class="total_display">
-        <p>0</p>
+        <p><span class="total_display"></span></p>
     </div>
 
     <div class="passive_display">
         <p>0 per second</p>
     </div>
 
-    <div class="container">
+    <div class="button_container">
+        <button class="language_button" onclick="displayLanguageContainer()">Languages</button>
+        <button class="shop_button" onclick="displayPassiveContainer()">Shop</button>
+    </div>
 
-        <div class="clicker_container">
-            <button class="clicker_button" onclick="clickingIncrementor()">
+    <div class="game">
+
+        <div class="active_container">
+            <!-- <button class="clicker_button" onclick="clickingIncrementor()">
                 <img class="money_image" src="Images/money_image.png" alt="We have no money right now">
-            </button>
+            </button> -->
+
+            <button class="python">Python</button>
+            <button class="C++">C++</button>
+            <button class="JavaScript">JavaScript</button>
+            <button class="HTML">HTML</button>
+            <button class="PHP">PHP</button>
+            <button class="mySQL">MySQL</button>
+            <button class="R">R</button>
+            <button class="assembly">Assembly</button>
+            <button class="malbolge">Malbolge</button>
+            <button class="cow">Cow</button>
+        </div>
+
+
+        <div class="ide_container">
+            <input class="ide_textbox" type="text" placeholder="IDE">
         </div>
     
         
         <div class="passive_container">
-            <button class="lemonade_stand" onclick="passiveIncrementor('lemonade_stand'); outputCost('lemonade_stand')">
-                <img class="lemonade_image" src="Images/Lemonade Stand.jpg" alt="Lemonade Stand">
-            </button>
-            <p>Cost <span class="lemonade_cost"></span></p>
 
-            <button class="newspaper_delivery" onclick="passiveIncrementor('newspaper_delivery')">
-                <img class="newspaper_image" src="Images/Newspaper Delivery.jpg" alt="Newspaper Delivery">
-            </button>
-            <p>Cost <span class="newspaper_cost"></span></p>
+            <div class="basic_website_container">
+                <button class="basic_website" onclick="passiveIncrementor('basic_website')">
+                    <img class="basic_website_image" src="Images/basic_website_image.webp" alt="Basic Website">
+                </button>
+                <p>Cost <span class="basic_website_cost"></span></p>
+            </div>
+
+            <div class="to_do_list_container">
+                <button class="to_do_list" onclick="passiveIncrementor('to_do_list')">
+                    <img class="to_do_list_image" src="Images/to_do_list_image.png" alt="Newspaper Delivery">
+                </button>
+                <p>Cost <span class="to_do_list_cost"></span></p>
+            </div>  
+
+            <div class="weather_app_container">
+                <button class="weather_app" onclick="passiveIncrementor('weather_app')">
+                    <img class="weather_app_image" src="Images/weather_app_image.jpg" alt="Weather App">
+                </button>
+                <p>Cost <span class="weather_app_cost"></span></p>
+            </div>
+
+            <div class="portfolio_website_container">
+                <button class="portfolio_website" onclick="passiveIncrementor('portfolio_website')">
+                    <img class="portfolio_website_image" src="Images/portfolio_website_image.png" alt="Portfolio Website">
+                </button>
+                <p>Cost <span class="portfolio_website_cost"></span></p>
+            </div>
+
+            <div class="blog_platform_container">
+                <button class="blog_platform" onclick="passiveIncrementor('blog_platform')">
+                    <img class="blog_platform_image" src="Images/blog_platform_image.webp" alt="Blog Platform">
+                </button>
+                <p>Cost <span class="blog_platform_cost"></span></p>
+            </div>
+
+            <div class="e_commerce_website_container">
+                <button class="e_commerce_website" onclick="passiveIncrementor('e_commerce_website')">
+                    <img class="e_commerce_website_image" src="Images/e_commerce_website_image.webp" alt="E-Commerce Site">
+                </button>
+                <p>Cost <span class="e_commerce_website_cost"></span></p>
+            </div>
+
+            <div class="mobile_app_container">
+                <button class="mobile_app" onclick="passiveIncrementor('mobile_app')">
+                    <img class="mobile_app_image" src="Images/mobile_app_image.png" alt="Mobile App">
+                </button>
+                <p>Cost <span class="mobile_app_cost"></span></p>
+            </div>
+
+            <div class="social_media_platform_container">
+                <button class="social_media_platform" onclick="passiveIncrementor('social_media_platform')">
+                    <img class="social_media_platform_image" src="Images/social_media_platform_image.jpg" alt="Social Media Platform">
+                </button>
+                <p>Cost <span class="social_media_platform_cost"></span></p>
+            </div>
+            
+            <div class="video_game_container">
+                <button class="video_game" onclick="passiveIncrementor('video_game')">
+                    <img class="video_game_image" src="Images/video_game_image.jpg" alt="Video Game">
+                </button>
+                <p>Cost <span class="video_game_cost"></span></p>
+            </div>
+
+            <div class="search_engine">
+                <button class="search_engine" onclick="passiveIncrementor('search_engine')">
+                    <img class="search_engine_image" src="Images/search_engine_image.webp" alt="Search Engine">
+                </button>
+                <p>Cost <span class="search_engine_cost"></span></p>
+            </div>
+
+            <div class="operating_system_container">
+                <button class="operating_system" onclick="passiveIncrementor('operating_system')">
+                    <img class="operating_system_image" src="Images/operating_system_image.jpg" alt="Operating System">
+                </button>
+                <p>Cost <span class="operating_system_cost"></span></p>
+            </div>
         </div>
 
     </div>
+
+
+    <div class="upgrade_container">
+        
+    </div>
     
 
-
     <script src="script.js"></script>
-    <script> 
-        passiveImplementation()
-        outputCost('lemonade_stand')
-        outputCost('newspaper_delivery')
-    </script>
 </body>
 </html>

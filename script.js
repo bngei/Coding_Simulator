@@ -1,34 +1,75 @@
 // Creating passive objects
-let hashmap = {
-    lemonade_stand: {
-        cost: 10,
-        increase: 1,
-        total_owned: 0
-    },
-    newspaper_delivery: {
-        cost: 50,
-        increase: 5,
-        total_owned: 0
-    },
-    car_wash: {
-        cost: 100,
-        increase: 10,
-        total_owned: 0
-    },
-    pizza_delivery: {
-        cost: 500,
-        increase: 50,
-        total_owned: 0 
-    },
+let hashmap = localStorage.getItem("hashmap");
+if(hashmap === null){
+
+    hashmap = {
+        basic_website: {
+            cost: 10,
+            increase: 1,
+            total_owned: 0
+        },
+        to_do_list: {
+            cost: 50,
+            increase: 5,
+            total_owned: 0
+        },
+        weather_app: {
+            cost: 500,
+            increase: 10,
+            total_owned: 0
+        },
+        portfolio_website: {
+            cost: 1000,
+            increase: 50,
+            total_owned: 0 
+        },
+        blog_platform: {
+            cost: 5000,
+            increase: 100,
+            total_owned: 0
+        },
+        e_commerce_website: {
+            cost: 1000,
+            increase: 500,
+            total_owned: 0
+        },
+        mobile_app: {
+            cost: 50000,
+            increase: 1000,
+            total_owned: 0
+        },
+        social_media_platform: {
+            cost: 100000,
+            increase: 5000,
+            total_owned: 0
+        },
+        video_game: {
+            cost: 500000,
+            increase: 10000,
+            total_owned: 0
+        },
+        search_engine: {
+            cost: 1000000,
+            increase: 50000,
+            total_owned: 0
+        },
+        operating_system: {
+            cost: 10000000,
+            increase: 100000,
+            total_owned: 0
+        }
+    }
+    localStorage.setItem("hashmap", JSON.stringify(hashmap))
+} else {
+    hashmap = JSON.parse(hashmap);
 }
-localStorage.setItem("hashmap", hashmap)
 
 
 // Initalizing total counter
-let total = localStorage.getItem("total");
-if(total === null){
-    total = 0;
-    localStorage.setItem("total", total);
+let total = parseInt(localStorage.getItem("total"));
+if(total === null || isNaN(total)){
+    total = parseInt(0);
+    localStorage.setItem("total", 0);
 } else {
     total = parseInt(total);
     const display = document.getElementsByClassName("total_display")[0];
@@ -40,10 +81,12 @@ if(total === null){
 let passive = localStorage.getItem("passive");
 if(passive === null){
     passive = 0;
+    localStorage.setItem("passive", 0);
 } else {
     passive = parseInt(passive);
     const display = document.getElementsByClassName("passive_display")[0];
     display.textContent = passive + " per second";
+    
 }
 
 
@@ -77,7 +120,9 @@ function passiveIncrementor(name) {
         localStorage.setItem("passive", passive);
 
         object.total_owned += 1;
-        object.cost = Math.floor(object.cost * 2);
+        object.cost = Math.floor(object.cost * 1.15);
+        outputCost(name);
+        localStorage.setItem("hashmap", JSON.stringify(hashmap));
     }
 }
 
@@ -85,27 +130,52 @@ function passiveIncrementor(name) {
 // Adding passive implementation
 function passiveImplementation() {
     setInterval(function(){
-        let total = localStorage.getItem("total");
-        let passive = localStorage.getItem("passive");
-
-        total = parseInt(total);
-        passive = parseInt(passive);
-
+        let total = parseInt(localStorage.getItem("total")) || 0;
+        let passive = parseInt(localStorage.getItem("passive")) || 0;
+        
+    
         total += passive;
         localStorage.setItem("total", total);
 
         const display = document.getElementsByClassName("total_display")[0];
         display.textContent = total;
-
     }, 1000);
 }
 
 
 // Outputting the cost
-function outputCost(name){
-    let object = hashmap[name];
-    let cost = object.cost;
+function outputCost(){
+    for(const key in hashmap){
+        let object = hashmap[key];
+        let cost = object.cost;
+        let class_name = key + "_cost";
 
-    const display = document.getElementsByClassName(name)[0];
-    display.textContent = cost;
+        const display = document.getElementsByClassName(class_name)[0];
+        display.textContent = cost;
+    }
+}
+
+passiveImplementation();
+outputCost();
+
+
+// Hiding the passive container
+function displayPassiveContainer(){
+    const container = document.getElementsByClassName("passive_container")[0];
+    console.log(container)
+    console.log(container.style.display)
+    if(container.style.display == "none"){
+        container.style.display = "flex";
+    } else {
+        container.style.display = "none";
+    }
+}
+
+function displayLanguageContainer(){
+    const container = document.getElementsByClassName("active_container")[0];
+    if(container.style.display === "none"){
+        container.style.display = "flex";
+    } else {
+        container.style.display = "none";
+    }
 }
