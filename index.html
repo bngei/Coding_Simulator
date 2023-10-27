@@ -22,22 +22,22 @@
     </div>
 
     <div class="game">
-
+        <button class="clicker_button" onclick="clickingIncrementor()">
+            <img class="money_image" src="Images/money_image.png" alt="We have no money right now">
+        </button>
         <div class="active_container">
-            <!-- <button class="clicker_button" onclick="clickingIncrementor()">
-                <img class="money_image" src="Images/money_image.png" alt="We have no money right now">
-            </button> -->
+            
 
-            <button class="python">Python</button>
-            <button class="C++">C++</button>
-            <button class="JavaScript">JavaScript</button>
-            <button class="HTML">HTML</button>
-            <button class="PHP">PHP</button>
-            <button class="mySQL">MySQL</button>
-            <button class="R">R</button>
-            <button class="assembly">Assembly</button>
-            <button class="malbolge">Malbolge</button>
-            <button class="cow">Cow</button>
+            <button class="python_button" onclick="purchaseLanguage('python', 'cpp')">Python $0</button>
+            <button class="cpp_button" onclick="purchaseLanguage('cpp', 'javascript')">C++ $500</button>
+            <button class="javascript_button" onclick="purchaseLanguage('javascript', 'html')">JavaScript $5000</button>
+            <button class="html_button" onclick="purchaseLanguage('html', 'php')">HTML $50000</button>
+            <button class="php_button" onclick="purchaseLanguage('php', 'mysql')">PHP $500000</button>
+            <button class="mysql_button" onclick="purchaseLanguage('php', 'r')">MySQL $5000000</button>
+            <button class="r_button" onclick="purchaseLanguage('r', 'assembly')">R $50000000</button>
+            <button class="assembly_button" onclick="purchaseLanguage('assembly', 'malbolge')">Assembly $500000000</button>
+            <button class="malbolge_button" onclick="purchaseLanguage('malbolge', 'cow')">Malbolge $5000000000</button>
+            <button class="cow_button">Cow</button>
         </div>
 
 
@@ -46,83 +46,127 @@
         </div>
     
         
-        <div class="passive_container">
+        <div class="passive_container" style="display: none">
 
-            <div class="basic_website_container">
-                <button class="basic_website" onclick="passiveIncrementor('basic_website')">
-                    <img class="basic_website_image" src="Images/basic_website_image.webp" alt="Basic Website">
+            <div class="basic_website_container" style="display: block">
+                <button class="basic_website_button" onclick="purchaseProject('basic_website', 'to_do_list')">
+                    <img class="basic_website_image" src="Images/basic_website_image.webp" alt="Basic Website" style="width: 150px">
                 </button>
-                <p>Cost <span class="basic_website_cost"></span></p>
+                <div class="basic_website_info" style="display: block">
+                    <p>Basic Website</p>
+                    <p>Cost: $<span class="basic_website_cost"></span></p>
+                    <p>Total Owned: <span class="basic_website_total_owned"></span></p>
+                </div>
             </div>
 
             <div class="to_do_list_container">
-                <button class="to_do_list" onclick="passiveIncrementor('to_do_list')">
-                    <img class="to_do_list_image" src="Images/to_do_list_image.png" alt="Newspaper Delivery">
+                <button class="to_do_list_button" onclick="purchaseProject('to_do_list', 'weather_app')">
+                    <img class="to_do_list_image" src="Images/to_do_list_image.png" alt="To-Do List">
                 </button>
-                <p>Cost <span class="to_do_list_cost"></span></p>
+                <div class="to_do_list_info" style="display: block">
+                    <p>To-Do-List Application</p>
+                    <p>Cost: $<span class="to_do_list_cost"></span></p>
+                    <p>Total Owned: <span class="to_do_list_total_owned"></span></p>
+                </div>
             </div>  
 
             <div class="weather_app_container">
-                <button class="weather_app" onclick="passiveIncrementor('weather_app')">
+                <button class="weather_app_button" onclick="purchaseProject('weather_app', 'portfolio_website')">
                     <img class="weather_app_image" src="Images/weather_app_image.jpg" alt="Weather App">
                 </button>
-                <p>Cost <span class="weather_app_cost"></span></p>
+                <div class="weather_app_info" style="display: block">
+                    <p>Weather Application</p>
+                    <p>Cost: $<span class="weather_app_cost"></span></p>
+                    <p>Total Owned: <span class="weather_app_total_owned"></span></p>
+                </div>
             </div>
 
             <div class="portfolio_website_container">
-                <button class="portfolio_website" onclick="passiveIncrementor('portfolio_website')">
+                <button class="portfolio_website_button" onclick="purchaseProject('portfolio_website', 'blog_platform')">
                     <img class="portfolio_website_image" src="Images/portfolio_website_image.png" alt="Portfolio Website">
                 </button>
-                <p>Cost <span class="portfolio_website_cost"></span></p>
+                <div class="portfolio_website_info" style="display: block">
+                    <p>Portfolio Website</p>
+                    <p>Cost: $<span class="portfolio_website_cost"></span></p>
+                    <p>Total Owned: <span class="portfolio_website_total_owned"></span></p>
+                </div>
             </div>
 
             <div class="blog_platform_container">
-                <button class="blog_platform" onclick="passiveIncrementor('blog_platform')">
+                <button class="blog_platform_button" onclick="purchaseProject('blog_platform', 'e_commerce_website')">
                     <img class="blog_platform_image" src="Images/blog_platform_image.webp" alt="Blog Platform">
                 </button>
-                <p>Cost <span class="blog_platform_cost"></span></p>
+                <div class="blog_platform_info" style="display: block">
+                    <p>Blog Platform</p>
+                    <p>Cost: $<span class="blog_platform_cost"></span></p>
+                    <p>Total Owned: <span class="blog_platform_total_owned"></span></p>
+                </div>
             </div>
 
             <div class="e_commerce_website_container">
-                <button class="e_commerce_website" onclick="passiveIncrementor('e_commerce_website')">
+                <button class="e_commerce_website_button" onclick="purchaseProject('e_commerce_website', 'mobile_app')">
                     <img class="e_commerce_website_image" src="Images/e_commerce_website_image.webp" alt="E-Commerce Site">
                 </button>
-                <p>Cost <span class="e_commerce_website_cost"></span></p>
+                <div class="e_commerce_website_info" style="display: block">
+                    <p>E-Commerce Website</p>
+                    <p>Cost: $<span class="e_commerce_website_cost"></span></p>
+                    <p>Total Owned: <span class="e_commerce_website_total_owned"></span></p>
+                </div>
             </div>
 
             <div class="mobile_app_container">
-                <button class="mobile_app" onclick="passiveIncrementor('mobile_app')">
+                <button class="mobile_app_button" onclick="purchaseProject('mobile_app', 'social_media_platform')">
                     <img class="mobile_app_image" src="Images/mobile_app_image.png" alt="Mobile App">
                 </button>
-                <p>Cost <span class="mobile_app_cost"></span></p>
+                <div class="mobile_app_info" style="display: block">
+                    <p>Mobile App</p>
+                    <p>Cost: $<span class="mobile_app_cost"></span></p>
+                    <p>Total Owned: <span class="mobile_app_total_owned"></span></p>
+                </div>
             </div>
 
             <div class="social_media_platform_container">
-                <button class="social_media_platform" onclick="passiveIncrementor('social_media_platform')">
+                <button class="social_media_platform_button" onclick="purchaseProject('social_media_platform', 'video_game')">
                     <img class="social_media_platform_image" src="Images/social_media_platform_image.jpg" alt="Social Media Platform">
                 </button>
-                <p>Cost <span class="social_media_platform_cost"></span></p>
+                <div class="social_media_platform_info" style="display: block">
+                    <p>Social Media Platform</p>
+                    <p>Cost: $<span class="social_media_platform_cost"></span></p>
+                    <p>Total Owned: <span class="social_media_platform_total_owned"></span></p>
+                </div>
             </div>
             
             <div class="video_game_container">
-                <button class="video_game" onclick="passiveIncrementor('video_game')">
+                <button class="video_game_button" onclick="purchaseProject('video_game', 'search_engine')">
                     <img class="video_game_image" src="Images/video_game_image.jpg" alt="Video Game">
                 </button>
-                <p>Cost <span class="video_game_cost"></span></p>
+                <div class="video_game_info" style="display: block">
+                    <p>Video Game</p>
+                    <p>Cost: $<span class="video_game_cost"></span></p>
+                    <p>Total Owned: <span class="video_game_total_owned"></span></p>
+                </div>
             </div>
 
-            <div class="search_engine">
-                <button class="search_engine" onclick="passiveIncrementor('search_engine')">
+            <div class="search_engine_container">
+                <button class="search_engine_button" onclick="purchaseProject('search_engine', 'operating_system')">
                     <img class="search_engine_image" src="Images/search_engine_image.webp" alt="Search Engine">
                 </button>
-                <p>Cost <span class="search_engine_cost"></span></p>
+                <div class="search_engine_info" style="display: block">
+                    <p>Search Engine</p>
+                    <p>Cost: $<span class="search_engine_cost"></span></p>
+                    <p>Total Owned: <span class="search_engine_total_owned"></span></p>
+                </div>
             </div>
 
             <div class="operating_system_container">
-                <button class="operating_system" onclick="passiveIncrementor('operating_system')">
+                <button class="operating_system_button" onclick="purchaseProject('operating_system', 'operating_system')">
                     <img class="operating_system_image" src="Images/operating_system_image.jpg" alt="Operating System">
                 </button>
-                <p>Cost <span class="operating_system_cost"></span></p>
+                <div class="operating_system_info" style="display: block">
+                    <p>Operating System</p>
+                    <p>Cost: $<span class="operating_system_cost"></span></p>
+                    <p>Total Owned: <span class="operating_system_total_owned"></span></p>
+                </div>
             </div>
         </div>
 

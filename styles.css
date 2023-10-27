@@ -1,5 +1,5 @@
 body {
-    background-color: #29e932; 
+    background-color: #fbf1c7; 
 }
 
 
@@ -32,6 +32,11 @@ body {
     height: auto;
 }
 
+.clicker_button {
+    width: 400px;
+    height: 400px;
+}
+
 
 .clicker_container {
     display: flex;
@@ -46,7 +51,7 @@ body {
 }
 
 
-.shop_button {
+.button_container button {
    background-color:burlywood;
 }
 
@@ -64,7 +69,11 @@ body {
 
 
 .active_container button {
-    margin: 5px;
+    display: none;
+}
+
+.active_container .python_button {
+    display: block;
 }
 
 
@@ -76,59 +85,14 @@ body {
 
 .passive_container div {
     margin: 5px;
+    display: none;
+}
+
+.passive_container .basic_website_container {
+    display: flex;
 }
 
 
-.basic_website_image {
-    width: 150px;
-}
-
-
-.to_do_list_image {
-    width: 150px;
-}
-
-
-.weather_app_image {
-    width: 150px;
-}
-
-
-.portfolio_website_image {
-    width: 150px;
-}   
-
-
-.blog_platform_image {
-    width: 150px;
-}   
-
-
-.e_commerce_website_image {
-    width: 150px;
-}
-
-
-.mobile_app_image {
-    width: 150px;
-}
-
-
-.social_media_platform_image {
-    width: 150px;
-}
-
-
-.video_game_image {
-    width: 150px;
-}
-
-
-.search_engine_image {
-    width: 150px;
-}
-
-
-.operating_system_image {
+.passive_container img {
     width: 150px;
 }

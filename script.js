@@ -29,34 +29,74 @@ if(hashmap === null){
             total_owned: 0
         },
         e_commerce_website: {
-            cost: 1000,
+            cost: 20000,
             increase: 500,
             total_owned: 0
         },
         mobile_app: {
-            cost: 50000,
+            cost: 100000,
             increase: 1000,
             total_owned: 0
         },
         social_media_platform: {
-            cost: 100000,
+            cost: 500000,
             increase: 5000,
             total_owned: 0
         },
         video_game: {
-            cost: 500000,
+            cost: 1000000,
             increase: 10000,
             total_owned: 0
         },
         search_engine: {
-            cost: 1000000,
+            cost: 10000000,
             increase: 50000,
             total_owned: 0
         },
         operating_system: {
-            cost: 10000000,
+            cost: 1000000000,
             increase: 100000,
             total_owned: 0
+        },
+        python: {
+            cost: 0,
+            purchased: true
+        },
+        cpp: {
+            cost: 500,
+            purchased: false
+        },
+        javascript: {  
+            cost: 5000, 
+            purchased: false
+        },
+        html: {
+            cost: 50000,
+            purchased: false
+        },
+        php: {
+            cost: 500000,
+            purchased: false
+        },
+        mysql: {
+            cost: 5000000,
+            purchased: false
+        },
+        r: {
+            cost: 50000000,
+            purchased: false
+        },
+        assembly: {
+            cost: 500000000,
+            purchased: false
+        },
+        malbolge: {
+            cost: 5000000000,
+            purchased: false
+        },
+        cow: {
+            cost: 50000000000,
+            purchased: false
         }
     }
     localStorage.setItem("hashmap", JSON.stringify(hashmap))
@@ -95,33 +135,50 @@ function clickingIncrementor(){
     const display = document.getElementsByClassName("total_display")[0];
     let total = parseInt(localStorage.getItem("total"));
 
-    total += 1;
+    total += 100000000000;
     display.textContent = total;
     localStorage.setItem("total", total);
 }
 
 
-// Adding passive incrementing functionality
-function passiveIncrementor(name) {
+// Function that purchases a project and outputs the information
+function purchaseProject(currentProject, nextProject) {
     const passive_display = document.getElementsByClassName("passive_display")[0];
     const total_display = document.getElementsByClassName("total_display")[0];
-    let total = localStorage.getItem("total");
+    let total = parseInt(localStorage.getItem("total"));
+    let passive = parseInt(localStorage.getItem("passive"));
+    const costDisplay = document.getElementsByClassName(currentProject + "_cost")[0];
+    const totalOwnedDisplay = document.getElementsByClassName(currentProject + "_total_owned")[0];
 
-    let object = hashmap[name];
-    if(total >= object.cost && object)
+    if(total >= hashmap[currentProject].cost)
     {
-        passive += object.increase;
-        total -= object.cost;
+        // Buying the project
+        hashmap[currentProject].total_owned += 1;
 
+
+        passive += parseInt(hashmap[currentProject].increase);
+        total -= parseInt(hashmap[currentProject].cost);
+
+
+        // Updating the cost
+        hashmap[currentProject].cost = Math.floor(hashmap[currentProject].cost * 1.15);
+        costDisplay.textContent = hashmap[currentProject].cost;
+
+
+        // Displaying all information
         passive_display.textContent = passive + " per second";
         total_display.textContent = total;
+        totalOwnedDisplay.textContent = hashmap[currentProject].total_owned;
 
+
+        // Displaying next project
+        hashmap[nextProject].purchased = true;
+        document.getElementsByClassName(nextProject + "_container")[0].style.display = "block"; 
+        console.log(nextProject + "_container");
+
+        // Updating the local storage
         localStorage.setItem("total", total);
         localStorage.setItem("passive", passive);
-
-        object.total_owned += 1;
-        object.cost = Math.floor(object.cost * 1.15);
-        outputCost(name);
         localStorage.setItem("hashmap", JSON.stringify(hashmap));
     }
 }
@@ -144,19 +201,13 @@ function passiveImplementation() {
 
 
 // Outputting the cost
-function outputCost(){
-    for(const key in hashmap){
-        let object = hashmap[key];
-        let cost = object.cost;
-        let class_name = key + "_cost";
+function outputCost(project){
+    let object = hashmap[key];
+    let cost = object.cost;
 
-        const display = document.getElementsByClassName(class_name)[0];
-        display.textContent = cost;
-    }
+    const display = document.getElementsByClassName(project + "_cost")[0];
+    display.textContent = cost;
 }
-
-passiveImplementation();
-outputCost();
 
 
 // Hiding the passive container
@@ -179,3 +230,22 @@ function displayLanguageContainer(){
         container.style.display = "none";
     }
 }
+
+
+// When a user purchases a new language the next one will be unlocked
+function purchaseLanguage(currentLanguage, nextLanguage){
+    const total_display = document.getElementsByClassName("total_display")[0];
+    let total = parseInt(localStorage.getItem("total"));
+
+    console.log(total)
+    if(total >= parseInt(hashmap[currentLanguage].cost)){
+        total -= hashmap[currentLanguage].cost;
+        localStorage.setItem("total", total);
+        total_display.textContent = total;
+        hashmap[nextLanguage].purchased = true;
+        document.getElementsByClassName(nextLanguage + "_button")[0].style.display = "flex";
+    }
+}
+
+
+passiveImplementation();
