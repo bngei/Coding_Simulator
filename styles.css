@@ -1,14 +1,24 @@
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 body {
     background-color: #fbf1c7; 
+    animation: transitionIn 3s;
 }
 
 
-.money_image {
+.moneyImage {
     background: none;
 }
 
 
-.total_display {
+.totalDisplay {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +27,7 @@ body {
 }
 
 
-.passive_display {
+.passiveDisplay {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,13 +42,13 @@ body {
     height: auto;
 }
 
-.clicker_button {
+.clickerButton {
     width: 400px;
     height: 400px;
 }
 
 
-.clicker_container {
+.clickerContainer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,12 +56,12 @@ body {
 }
 
 
-.button_container {
+.buttonContainer {
     padding-bottom: 20px;
 }
 
 
-.button_container button {
+.buttonContainer button {
    background-color:burlywood;
 }
 
@@ -62,37 +72,39 @@ body {
 }
 
 
-.active_container {
+.activeContainer {
     flex-direction: column;
     width:min-content;
 }
 
 
-.active_container button {
+.activeContainer button {
     display: none;
+    margin: 5px;
+    background-color: burlywood;
 }
 
-.active_container .python_button {
+.activeContainer .pythonButton {
     display: block;
 }
 
 
-.passive_container {
+.passiveContainer {
     flex-wrap: wrap;
     display: none;
 }
 
 
-.passive_container div {
+.passiveContainer div {
     margin: 5px;
     display: none;
 }
 
-.passive_container .basic_website_container {
+.passiveContainer .basicWebsiteContainer {
     display: flex;
 }
 
 
-.passive_container img {
+.passiveContainer img {
     width: 150px;
 }
