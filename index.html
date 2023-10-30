@@ -8,12 +8,19 @@
     <title>Coding Simulator</title>
 </head>
 <body>
-    <div class="totalDisplay">
-        <p><span class="totalDisplay"></span></p>
-    </div>
+    <div class="info">
+        <div class="totalDisplay">
+            <p><span class="totalDisplay"></span></p>
+        </div>
 
-    <div class="passiveDisplay">
-        <p>0 per second</p>
+        <div class="passiveDisplay">
+            <p>0 per second</p>
+        </div>
+
+        <div class="jokeDisplay">
+            <p class="setup"></p>
+            <p class="delivery"></p>
+        </div>
     </div>
 
     <div class="buttonContainer">
@@ -28,21 +35,23 @@
             <img class="moneyImage" src="Images/moneyImage.png" alt="We have no money right now">
         </button>
         <div class="activeContainer">
-            <button class="pythonButton" onclick="purchaseLanguage('python', 'cpp')">Python $0</button>
-            <button class="cppButton" onclick="purchaseLanguage('cpp', 'javascript')">C++ $500</button>
-            <button class="javascriptButton" onclick="purchaseLanguage('javascript', 'html')">JavaScript $5000</button>
-            <button class="htmlButton" onclick="purchaseLanguage('html', 'php')">HTML $50000</button>
-            <button class="phpButton" onclick="purchaseLanguage('php', 'mysql')">PHP $500000</button>
-            <button class="mysqlButton" onclick="purchaseLanguage('mysql', 'r')">MySQL $5000000</button>
-            <button class="rButton" onclick="purchaseLanguage('r', 'assembly')">R $50000000</button>
-            <button class="assemblyButton" onclick="purchaseLanguage('assembly', 'malbolge')">Assembly $500000000</button>
-            <button class="malbolgeButton" onclick="purchaseLanguage('malbolge', 'cow')">Malbolge $5000000000</button>
-            <button class="cowButton">Cow</button>
+            <button class="pythonButton" onclick="purchaseLanguage('python', 'cpp'); activateLanguage('python')">Python $0</button>
+            <button class="cppButton" onclick="purchaseLanguage('cpp', 'javascript'); activateLanguage('cpp')">C++ $500</button>
+            <button class="javascriptButton" onclick="purchaseLanguage('javascript', 'html'); activateLanguage('javascript')">JavaScript $5000</button>
+            <button class="htmlButton" onclick="purchaseLanguage('html', 'php'); activateLanguage('html')">HTML $50000</button>
+            <button class="phpButton" onclick="purchaseLanguage('php', 'mysql'); activateLanguage('php')">PHP $500000</button>
+            <button class="mysqlButton" onclick="purchaseLanguage('mysql', 'r'); activateLanguage('mysql')">MySQL $5000000</button>
+            <button class="rButton" onclick="purchaseLanguage('r', 'assembly'); activateLanguage('r')">R $50000000</button>
+            <button class="assemblyButton" onclick="purchaseLanguage('assembly', 'malbolge'); activateLanguage('assembly')">Assembly $500000000</button>
+            <button class="malbolgeButton" onclick="purchaseLanguage('malbolge', 'cow'); activateLanguage('malbolge')">Malbolge $5000000000</button>
+            <button class="cowButton" onclick="purchaseLanguage('cow', 'cow'); activateLanguage('cow')">Cow</button>
         </div>
 
 
         <div class="ideContainer">
-            <input class="ideTextbox" type="text" placeholder="IDE">
+            <span class="code"></span>
+            <textarea class="ideTextarea" placeholder="Purchase a language to begin coding."></textarea>
+            <button class="enterButton" onclick="enterCode()">Enter</button>
         </div>
     
         

@@ -1,7 +1,7 @@
 // Creating hashmap
-let hashmap = localStorage.getItem("hashmap");
-if(hashmap === null){
-    hashmap = {
+let projectHashmap = localStorage.getItem("projectHashmap");
+if(projectHashmap === null){
+    projectHashmap = {
         basicWebsite: {
             cost: 10,
             increase: 1,
@@ -56,49 +56,72 @@ if(hashmap === null){
             cost: 1000000000,
             increase: 100000,
             totalOwned: 0
-        },
+        }
+    }
+    localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap))
+} else {
+    projectHashmap = JSON.parse(projectHashmap);
+}
+
+// Creating language hashmap
+let languageHashmap = localStorage.getItem("languageHashmap");
+if(languageHashmap === null){
+    languageHashmap = {
         python: {
-            cost: 0,
-            purchased: false
+        cost: 0,
+        purchased: false,
+        active: false,
+        code: [
+            'print("Hello World!")'
+            ]
         },
         cpp: {
             cost: 500,
-            purchased: false
+            purchased: false,
+            active: false
         },
         javascript: {  
             cost: 5000, 
-            purchased: false
+            purchased: false,
+            active: false
         },
         html: {
             cost: 50000,
-            purchased: false
+            purchased: false,
+            active: false
         },
         php: {
             cost: 500000,
-            purchased: false
+            purchased: false,
+            active: false
         },
         mysql: {
             cost: 5000000,
-            purchased: false
+            purchased: false,
+            active: false
         },
         r: {
             cost: 50000000,
-            purchased: false
+            purchased: false,
+            active: false
         },
         assembly: {
             cost: 500000000,
-            purchased: false
+            purchased: false,
+            active: false
         },
         malbolge: {
             cost: 5000000000,
-            purchased: false
+            purchased: false,
+            active: false
         },
         cow: {
             cost: 50000000000,
-            purchased: false
+            purchased: false,
+            active: false
         }
     }
-    localStorage.setItem("hashmap", JSON.stringify(hashmap))
+    localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap))
 } else {
-    hashmap = JSON.parse(hashmap);
+    languageHashmap = JSON.parse(languageHashmap);
 }

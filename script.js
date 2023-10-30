@@ -35,15 +35,15 @@ function clickingIncrementor(){
 
 // Function that purchases a project and outputs the information
 function purchaseProject(currentProject, nextProject){
-    if(total >= hashmap[currentProject].cost){
+    if(total >= projectHashmap[currentProject].cost){
         // Buying the project
-        hashmap[currentProject].totalOwned += 1;
+        projectHashmap[currentProject].totalOwned += 1;
 
-        passive += parseInt(hashmap[currentProject].increase);
-        total -= parseInt(hashmap[currentProject].cost);
+        passive += parseInt(projectHashmap[currentProject].increase);
+        total -= parseInt(projectHashmap[currentProject].cost);
 
         // Updating the cost
-        hashmap[currentProject].cost = Math.floor(hashmap[currentProject].cost * 1.15);
+        projectHashmap[currentProject].cost = Math.floor(projectHashmap[currentProject].cost * 1.15);
 
         // Displaying all information
         passiveDisplay.textContent = passive + " per second";
@@ -57,22 +57,37 @@ function purchaseProject(currentProject, nextProject){
         // Updating the local storage
         localStorage.setItem("total", total);
         localStorage.setItem("passive", passive);
-        localStorage.setItem("hashmap", JSON.stringify(hashmap));
+        localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
     }
 }
 
 
 // When a user purchases a new language the next one will be unlocked
 function purchaseLanguage(currentLanguage, nextLanguage){
-    if(total >= parseInt(hashmap[currentLanguage].cost) && hashmap[currentLanguage].purchased == false){
-        total -= hashmap[currentLanguage].cost;
-        hashmap[currentLanguage].purchased = true;
+    if(total >= parseInt(languageHashmap[currentLanguage].cost) && languageHashmap[currentLanguage].purchased == false){
+        total -= languageHashmap[currentLanguage].cost;
+        languageHashmap[currentLanguage].purchased = true;
         totalDisplay.textContent = total;
         document.getElementsByClassName(nextLanguage + "Button")[0].style.display = "flex";
         localStorage.setItem("total", total);
-        localStorage.setItem("hashmap", JSON.stringify(hashmap));
+        localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));
     }
 } 
+
+
+// Activate a language and deactivate the others
+function activateLanguage(currentLanguage){
+    languageHashmap[currentLanguage].active = true;
+    for(let key in languageHashmap){
+        if(key === currentLanguage){
+            languageHashmap[key].active = true;
+        } else {
+            languageHashmap[key].active = false;
+        }
+    }
+    updateCode(currentLanguage);
+    localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));
+}
 
 
 // Adding passive implementation
@@ -91,9 +106,9 @@ function displayInfo(project){
     const totalOwnedDisplay = document.getElementsByClassName(project + "TotalOwned")[0];
     const increaseDisplay = document.getElementsByClassName(project + "Increase")[0];
 
-    costDisplay.textContent = hashmap[project].cost;
-    totalOwnedDisplay.textContent = hashmap[project].totalOwned;
-    increaseDisplay.textContent = hashmap[project].increase;
+    costDisplay.textContent = projectHashmap[project].cost;
+    totalOwnedDisplay.textContent = projectHashmap[project].totalOwned;
+    increaseDisplay.textContent = projectHashmap[project].increase;
 }
 
 
@@ -110,7 +125,7 @@ function displayPassiveContainer(){
             className = className.substring(0, className.length - "Container".length);
             displayInfo(className);
 
-            if(hashmap[className].totalOwned > 0){
+            if(projectHashmap[className].totalOwned > 0){
                 containerElements[i].style.display = "block";
             } else {
                 containerElements[i].style.display = "block";
@@ -127,22 +142,26 @@ function displayPassiveContainer(){
 function displayActiveContainer(){
     const container = document.getElementsByClassName("activeContainer")[0];
     if(container.style.display === "none"){
-        container.style.display = "flex";
-        let activeContainer = document.querySelector('.activeContainer');
-        let buttons = activeContainer.querySelectorAll('button');
-
-        for(let i = 0; i < buttons.length; i++){
-            let className = buttons[i].className;
-            className = className.substring(0, className.length - "Button".length);
-            if(hashmap[className].purchased === true){
-                buttons[i].style.display = "block";
-            } else {
-                buttons[i].style.display = "block";
-                return;
-            }
-        }
+        container.style.display = "flex";   
     } else {
         container.style.display = "none";
+    }
+}
+
+
+// Display the purchased languages
+function displayLanguages(){
+    const activeContainer = document.querySelector('.activeContainer');
+    const buttons = activeContainer.querySelectorAll('button');
+    for(let i = 0; i < buttons.length; i++){
+        let className = buttons[i].className;
+        className = className.substring(0, className.length - "Button".length);
+        if(languageHashmap[className].purchased === true){
+            buttons[i].style.display = "block";
+        } else {
+            buttons[i].style.display = "block";
+            return;
+        }
     }
 }
 
@@ -158,6 +177,25 @@ function displayIdeContainer(){
 }
 
 
+// Updating the new code line 
+// function updateCode(language){
+//     const codeString = document.getElementsByClassName("code")[0];
+//     const line = languageHashmap.python.code;
+//     for(let i=0; i<line.length; i++){
+//         console.log(line[i])
+//     }
+//     codeString.textContent = languageHashmap[language].code;
+// }
+
+
+// Enter the code in the ide
+// function enterCode(){
+//     const codeString = document.getElementsByClassName("code")[0];
+//     console.log(languageHashmap.python.code);
+//     codeString.textContent = languageHashmap['python'].code;
+// }
+
+
 // Restarting the game
 function restartGame(){
     localStorage.clear();
@@ -165,4 +203,23 @@ function restartGame(){
 }
 
 
+// API
+async function getJoke(){ 
+    try {
+        const response = await fetch('https://v2.jokeapi.dev/joke/Any?type=twopart');
+        const data = await response.json();    
+
+        let setupElement = document.querySelector(".setup");
+        let deliveryElement = document.querySelector(".delivery");
+        setupElement.textContent = data.setup;
+        deliveryElement.textContent = data.delivery;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+getJoke();
+setInterval(getJoke, 20000);
+displayLanguages();
 passiveImplementation();
