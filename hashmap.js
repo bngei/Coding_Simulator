@@ -68,55 +68,65 @@ let languageHashmap = localStorage.getItem("languageHashmap");
 if(languageHashmap === null){
     languageHashmap = {
         python: {
-        cost: 0,
-        purchased: false,
-        active: false,
-        code: [
-            'print("Hello World!")'
-            ]
+            cost: 0,
+            payout: 5,
+            purchased: false,
+            active: false,
+            code: [
+                'print("Hello World!")'
+                ]
         },
         cpp: {
             cost: 500,
+            payout: 50,
             purchased: false,
             active: false
         },
         javascript: {  
             cost: 5000, 
+            payout: 500,
             purchased: false,
             active: false
         },
         html: {
             cost: 50000,
+            payout: 5000,
             purchased: false,
             active: false
         },
         php: {
             cost: 500000,
+            payout: 50000,
             purchased: false,
             active: false
         },
         mysql: {
             cost: 5000000,
+            payout: 500000,
             purchased: false,
             active: false
         },
         r: {
             cost: 50000000,
+            payout: 5000000,
             purchased: false,
             active: false
         },
         assembly: {
             cost: 500000000,
+            payout: 50000000,
             purchased: false,
             active: false
         },
         malbolge: {
             cost: 5000000000,
+            payout: 500000000,
             purchased: false,
             active: false
         },
         cow: {
             cost: 50000000000,
+            payout: 5000000000,
             purchased: false,
             active: false
         }

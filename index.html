@@ -9,13 +9,16 @@
 </head>
 <body>
     <div class="info">
-        <div class="totalDisplay">
-            <p><span class="totalDisplay"></span></p>
+        <div class="displays">
+            <div class="totalDisplay">
+                <p><span class="totalDisplay"></span></p>
+            </div>
+    
+            <div class="passiveDisplay">
+                <p>0 per second</p>
+            </div>
         </div>
-
-        <div class="passiveDisplay">
-            <p>0 per second</p>
-        </div>
+        
 
         <div class="jokeDisplay">
             <p class="setup"></p>
@@ -31,9 +34,6 @@
     </div>
 
     <div class="game">
-        <button class="clickerButton" onclick="clickingIncrementor()">
-            <img class="moneyImage" src="Images/moneyImage.png" alt="We have no money right now">
-        </button>
         <div class="activeContainer">
             <button class="pythonButton" onclick="purchaseLanguage('python', 'cpp'); activateLanguage('python')">Python $0</button>
             <button class="cppButton" onclick="purchaseLanguage('cpp', 'javascript'); activateLanguage('cpp')">C++ $500</button>

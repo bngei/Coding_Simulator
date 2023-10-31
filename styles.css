@@ -24,7 +24,16 @@ body button {
 }
 
 
+.info {
+    display: flex;
+    justify-content: space-between;
+}
 
+
+.displays {
+    align-items: center;
+    flex: 1;
+}
 
 
 .totalDisplay {
@@ -46,7 +55,7 @@ body button {
 
 
 .jokeDisplay {
-
+    width: 400px;
 }
 
 
@@ -62,14 +71,6 @@ body button {
 }
 
 
-.clickerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-}
-
-
 .buttonContainer {
     padding-bottom: 20px;
     margin: 5px;
@@ -78,6 +79,11 @@ body button {
 
 .buttonContainer button {
    background-color:burlywood;
+}
+
+
+.code {
+    user-select: none;
 }
 
 

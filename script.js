@@ -26,8 +26,8 @@ if(passive === null){
 
 
 // Adding incrementing functionality
-function clickingIncrementor(){
-    total += 10000000000;
+function increaseTotal(value){
+    total += value;
     totalDisplay.textContent = total;
     localStorage.setItem("total", total);
 }
@@ -81,12 +81,24 @@ function activateLanguage(currentLanguage){
     for(let key in languageHashmap){
         if(key === currentLanguage){
             languageHashmap[key].active = true;
+            document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "royalblue";
         } else {
             languageHashmap[key].active = false;
+            document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "burlywood";
         }
     }
     updateCode(currentLanguage);
     localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));
+}
+
+
+// Returns the active language
+function getActiveLanguage(){
+    for(let key in languageHashmap){
+        if(languageHashmap[key].active === true){
+            return key;
+        }
+    }
 }
 
 
@@ -178,22 +190,29 @@ function displayIdeContainer(){
 
 
 // Updating the new code line 
-// function updateCode(language){
-//     const codeString = document.getElementsByClassName("code")[0];
-//     const line = languageHashmap.python.code;
-//     for(let i=0; i<line.length; i++){
-//         console.log(line[i])
-//     }
-//     codeString.textContent = languageHashmap[language].code;
-// }
+function updateCode(language){
+    const codeString = document.getElementsByClassName("code")[0];
+    const line = languageHashmap.python.code;
+    for(let i = 0; i < line.length; i++){
+        // console.log(line[i])
+    }
+    codeString.textContent = languageHashmap[language].code;
+}
 
 
 // Enter the code in the ide
-// function enterCode(){
-//     const codeString = document.getElementsByClassName("code")[0];
-//     console.log(languageHashmap.python.code);
-//     codeString.textContent = languageHashmap['python'].code;
-// }
+function enterCode(){
+    const codeString = document.querySelector(".code").textContent;
+    let userInput = document.querySelector(".ideTextarea");
+    if(codeString === userInput.value){
+        userInput.value = "";
+        const activeLanguage = getActiveLanguage();
+        console.log(activeLanguage);
+        increaseTotal(parseInt(languageHashmap[activeLanguage].payout));
+    } else {
+        console.log("Incorrect");
+    }
+}
 
 
 // Restarting the game
