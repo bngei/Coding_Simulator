@@ -79,7 +79,8 @@ function purchaseLanguage(currentLanguage, nextLanguage){
 function activateLanguage(currentLanguage){
     languageHashmap[currentLanguage].active = true;
     for(let key in languageHashmap){
-        if(key === currentLanguage){
+        if(key === currentLanguage && languageHashmap[key].purchased === true){
+            updateCode(currentLanguage);
             languageHashmap[key].active = true;
             document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "royalblue";
         } else {
@@ -87,7 +88,6 @@ function activateLanguage(currentLanguage){
             document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "burlywood";
         }
     }
-    updateCode(currentLanguage);
     localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));
 }
 
@@ -182,7 +182,7 @@ function displayLanguages(){
 function displayIdeContainer(){
     const container = document.getElementsByClassName("ideContainer")[0];
     if(container.style.display === "none"){
-        container.style.display = "flex";
+        container.style.display = "block";
     } else {
         container.style.display = "none";
     }
@@ -191,26 +191,35 @@ function displayIdeContainer(){
 
 // Updating the new code line 
 function updateCode(language){
-    const codeString = document.getElementsByClassName("code")[0];
-    const line = languageHashmap.python.code;
-    for(let i = 0; i < line.length; i++){
-        // console.log(line[i])
+    const codeElement = document.getElementsByClassName("code")[0];
+    const codeString = document.querySelector(".code").textContent.replace("Code the following line:", "").trim();
+    let index = languageHashmap[language].code.indexOf(codeString)
+    const hashmap = languageHashmap[language].code;
+    if(index + 1 < hashmap.length){
+        index += 1;
+    } else {
+        index = 0;
     }
-    codeString.textContent = languageHashmap[language].code;
+    console.log(hashmap[index])
+    if(language === "html"){
+        codeElement.textContent = "Code the following line:\n" + hashmap[index];
+    } else {
+        codeElement.innerHTML = "Code the following line:<br>" + hashmap[index];
+    }
 }
 
 
 // Enter the code in the ide
 function enterCode(){
-    const codeString = document.querySelector(".code").textContent;
+    const codeString = document.querySelector(".code").textContent.replace("Code the following line:", "").trim();
     let userInput = document.querySelector(".ideTextarea");
     if(codeString === userInput.value){
         userInput.value = "";
         const activeLanguage = getActiveLanguage();
-        console.log(activeLanguage);
         increaseTotal(parseInt(languageHashmap[activeLanguage].payout));
+        updateCode(activeLanguage);
     } else {
-        console.log("Incorrect");
+        console.log("Syntax Error");
     }
 }
 

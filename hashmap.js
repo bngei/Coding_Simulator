@@ -73,62 +73,96 @@ if(languageHashmap === null){
             purchased: false,
             active: false,
             code: [
-                'print("Hello World!")'
-                ]
+                'print("Hello World!")',
+                'return(2+3)'
+            ]
         },
         cpp: {
             cost: 500,
             payout: 50,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                'cout << "Hello World!" << endl;',
+                'return(25+25);'
+            ]
         },
         javascript: {  
             cost: 5000, 
             payout: 500,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                'console.log("Hello World!")',
+                'return(250+250)'
+            ]
         },
         html: {
             cost: 50000,
             payout: 5000,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                '<p>Hello World!</p>',
+                '<p>2500+2500</p>'
+            ]
         },
         php: {
             cost: 500000,
             payout: 50000,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                'echo "Hello World!"',
+                'return(25000+25000)'
+            ]
         },
         mysql: {
             cost: 5000000,
             payout: 500000,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                'SELECT * FROM table;',
+                'RETURN 250000+250000;'
+            ]
         },
         r: {
             cost: 50000000,
-            payout: 5000000,
+            payout: 1000000,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                'print("Hello World!")',
+                'return(500000+500000)'
+            ]
         },
         assembly: {
             cost: 500000000,
             payout: 50000000,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                "msg db 'Hello, world!', 0xa"
+            ]
         },
         malbolge: {
             cost: 5000000000,
             payout: 500000000,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                "('&%:9]!~}|z2Vxwv-,POqponl$Hjig%eB@@>}=<M:9wv6WsU2T|nm-,jcL(I&%$#`CB]V?Tx<uVtT`Rpo3NlF.Jh++FdbCBA@?]!~|4XzyTT43Qsqq(LnmkjFhg${z@>"
+            ]
         },
         cow: {
             cost: 50000000000,
             payout: 5000000000,
             purchased: false,
-            active: false
+            active: false,
+            code: [
+                'OOOMoOMoOMoOMoOMoOMoOMoOMoOMMMmoOMMMMMMmoOMMMMOOMOomOoMoOmoOmoomOoMMMmoOMMMMMMmoOMMMMOOMOomOoMoOmoOmoomOoMMMmoOMMMMMMmoOMMMMOOMOomOoMoOmoOmooOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOomOomOoMMMmoOmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOomOoMMMmoOmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomOomOomOoMMMmoOmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOoMMMmoOMMMMOOMOomoOMoOmOomoomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoOMoOMoOMoomOoOOOmoOOOOmOomOomOoMMMmoOmoOMMMMOOMOomoOMoOmOomoomoOMoOMoomOo'
+            ]
         }
     }
     localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap))
