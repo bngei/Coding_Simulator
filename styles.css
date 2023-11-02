@@ -15,7 +15,7 @@ body {
 
 body button {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+    border-radius: 7px;
 }
 
 
@@ -110,7 +110,20 @@ body button {
 
 .activeContainer {
     flex-direction: column;
-    width: min-content;
+}
+
+
+.languageContainer:hover .toolTipText {
+    display: block;
+    opacity: 1;
+}
+
+.toolTipText {
+    display: none;
+    color: black;
+    padding: 5px;
+    opacity: 0;
+    width: 300px;
 }
 
 

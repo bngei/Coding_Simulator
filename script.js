@@ -82,7 +82,7 @@ function activateLanguage(currentLanguage){
         if(key === currentLanguage && languageHashmap[key].purchased === true){
             updateCode(currentLanguage);
             languageHashmap[key].active = true;
-            document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "royalblue";
+            document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "#8ec07c";
         } else {
             languageHashmap[key].active = false;
             document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "burlywood";
@@ -234,7 +234,7 @@ function restartGame(){
 // API
 async function getJoke(){ 
     try {
-        const response = await fetch('https://v2.jokeapi.dev/joke/Any?type=twopart');
+        const response = await fetch('https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart');
         const data = await response.json();    
 
         let setupElement = document.querySelector(".setup");

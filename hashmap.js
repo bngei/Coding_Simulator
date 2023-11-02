@@ -74,17 +74,19 @@ if(languageHashmap === null){
             active: false,
             code: [
                 'print("Hello World!")',
+                'value = 5',
                 'return(2+3)'
             ]
         },
-        cpp: {
+        html: {
             cost: 500,
             payout: 50,
             purchased: false,
             active: false,
             code: [
-                'cout << "Hello World!" << endl;',
-                'return(25+25);'
+                '<p>Hello World!</p>',
+                '<p>Value: 25</p>',
+                '<p>25+25</p>'
             ]
         },
         javascript: {  
@@ -94,27 +96,31 @@ if(languageHashmap === null){
             active: false,
             code: [
                 'console.log("Hello World!")',
+                'var value = 500',
                 'return(250+250)'
             ]
         },
-        html: {
+        php: {
             cost: 50000,
             payout: 5000,
             purchased: false,
             active: false,
             code: [
-                '<p>Hello World!</p>',
-                '<p>2500+2500</p>'
+                'echo "Hello World!"',
+                '$value = 5000',
+                'return(2500+2500)'
             ]
         },
-        php: {
+        r: {
             cost: 500000,
             payout: 50000,
             purchased: false,
             active: false,
             code: [
-                'echo "Hello World!"',
-                'return(25000+25000)'
+                
+                'print("Hello World!")',
+                'value <- 50000',
+                'return(250000+250000)'
             ]
         },
         mysql: {
@@ -124,17 +130,19 @@ if(languageHashmap === null){
             active: false,
             code: [
                 'SELECT * FROM table;',
+                'value = 500000',
                 'RETURN 250000+250000;'
             ]
         },
-        r: {
+        cpp: {
             cost: 50000000,
             payout: 1000000,
             purchased: false,
             active: false,
             code: [
-                'print("Hello World!")',
-                'return(500000+500000)'
+                'cout << "Hello World!" << endl;',
+                'int value = 1000000;',
+                'return(500000+500000);'
             ]
         },
         assembly: {
@@ -143,7 +151,9 @@ if(languageHashmap === null){
             purchased: false,
             active: false,
             code: [
-                "msg db 'Hello, world!', 0xa"
+                "msg db 'Hello, world!', 0xa",
+                'value db 5',
+                'mov eax, 50000000'
             ]
         },
         malbolge: {
@@ -152,7 +162,8 @@ if(languageHashmap === null){
             purchased: false,
             active: false,
             code: [
-                "('&%:9]!~}|z2Vxwv-,POqponl$Hjig%eB@@>}=<M:9wv6WsU2T|nm-,jcL(I&%$#`CB]V?Tx<uVtT`Rpo3NlF.Jh++FdbCBA@?]!~|4XzyTT43Qsqq(LnmkjFhg${z@>"
+                "('&%:9]!~}|z2Vxwv-,POqponl$Hjig%eB@@>}=<M:9wv6WsU2T|nm-,jcL(I&%$#`CB]V?Tx<uVtT`Rpo3NlF.Jh++FdbCBA@?]!~|4XzyTT43Qsqq(LnmkjFhg${z@>",
+                "'&%$#>=<;492765.Rsrqponmlk#('~}$#yx>_^][ZYXWVUTSRQPONMibgf_dcba`Y}]VUZYXWPOsSRQPON0Fj-,+*)('&%$#!~}|{zyxwvutsrqponm+*)('&%$#cb~`={zs9Zpun4l2pohgf,+*)('&%p"
             ]
         },
         cow: {

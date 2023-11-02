@@ -35,16 +35,46 @@
 
     <div class="game">
         <div class="activeContainer">
-            <button class="pythonButton" onclick="purchaseLanguage('python', 'cpp'); activateLanguage('python')">Python $0</button>
-            <button class="cppButton" onclick="purchaseLanguage('cpp', 'javascript'); activateLanguage('cpp')">C++ $500</button>
-            <button class="javascriptButton" onclick="purchaseLanguage('javascript', 'html'); activateLanguage('javascript')">JavaScript $5000</button>
-            <button class="htmlButton" onclick="purchaseLanguage('html', 'php'); activateLanguage('html')">HTML $50000</button>
-            <button class="phpButton" onclick="purchaseLanguage('php', 'mysql'); activateLanguage('php')">PHP $500000</button>
-            <button class="mysqlButton" onclick="purchaseLanguage('mysql', 'r'); activateLanguage('mysql')">MySQL $5000000</button>
-            <button class="rButton" onclick="purchaseLanguage('r', 'assembly'); activateLanguage('r')">R $50000000</button>
-            <button class="assemblyButton" onclick="purchaseLanguage('assembly', 'malbolge'); activateLanguage('assembly')">Assembly $500000000</button>
-            <button class="malbolgeButton" onclick="purchaseLanguage('malbolge', 'cow'); activateLanguage('malbolge')">Malbolge $5000000000</button>
-            <button class="cowButton" onclick="purchaseLanguage('cow', 'cow'); activateLanguage('cow')">Cow</button>
+            <div class="languageContainer">
+                <button class="pythonButton" onclick="purchaseLanguage('python', 'cpp'); activateLanguage('python')">Python $0</button>
+                <span class="toolTipText">This beginner-friendly language is renowned for its straightforward and human-readable syntax. You'll quickly discover that Python is like learning a new language, where the code almost reads like plain English. It's the perfect stepping stone to grasp fundamental programming concepts and build a strong foundation before embarking on more complex languages in your language-learning adventure.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="htmlButton" onclick="purchaseLanguage('html', 'php'); activateLanguage('html')">HTML $500</button>
+                <span class="toolTipText">HTML is not a programming language but a markup language used for creating the structure and content of web pages. It consists of tags and elements that define the layout and display of web content. HTML is the foundation of web development and is essential for creating web pages.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="javascriptButton" onclick="purchaseLanguage('javascript', 'html'); activateLanguage('javascript')">JavaScript $5000</button>
+                <span class="toolTipText">JavaScript is a versatile scripting language primarily used for web development. It allows you to add interactivity and dynamic features to web pages, making it a vital language for front-end and some back-end web development. JavaScript is commonly used for creating web applications, games, and various interactive features on websites.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="phpButton" onclick="purchaseLanguage('php', 'mysql'); activateLanguage('php')">PHP $50000</button>
+                <span class="toolTipText">PHP is a server-side scripting language used for web development. It is known for its ease of use and is commonly used for creating dynamic web applications and websites. PHP is widely used for server-side scripting and building web applications, especially in combination with databases.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="rButton" onclick="purchaseLanguage('r', 'assembly'); activateLanguage('r')">R $500000</button>
+                <span class="toolTipText">R is a programming language and environment designed for statistical computing and data analysis. It offers a wide range of statistical and graphical techniques. R is commonly used in fields like data analysis, statistics, and data visualization, making it an essential tool for researchers and data scientists.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="mysqlButton" onclick="purchaseLanguage('mysql', 'r'); activateLanguage('mysql')">MySQL $5000000</button>
+                <span class="toolTipText">MySQL is an open-source relational database management system (RDBMS) that uses SQL (Structured Query Language) for managing and querying data. MySQL is used for creating and managing databases, making it a fundamental tool for web applications and data-driven software.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="cppButton" onclick="purchaseLanguage('cpp', 'javascript'); activateLanguage('cpp')">C++ $50000000</button>
+                <span class="toolTipText">C++ is a powerful, high-level programming language. It offers both low-level and high-level programming capabilities, making it suitable for a wide range of applications. C++ is used in a variety of fields, including systems programming, game development, scientific applications, and embedded systems.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="assemblyButton" onclick="purchaseLanguage('assembly', 'malbolge'); activateLanguage('assembly')">Assembly $500000000</button>
+                <span class="toolTipText">Assembly language is a low-level programming language that is specific to the architecture of a particular computer or processor. It uses mnemonic codes for machine-level operations. Assembly is used for tasks requiring direct hardware control or optimization and is common in embedded systems and low-level programming.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="malbolgeButton" onclick="purchaseLanguage('malbolge', 'cow'); activateLanguage('malbolge')">Malbolge $5000000000</button>
+                <span class="toolTipText">Malbolge is an intentionally esoteric and highly challenging programming language. It was designed to be extremely difficult to understand or use, primarily for amusement and coding challenges. Malbolge is not used for practical programming and is more of a novelty language.</span>
+            </div>
+            <div class="languageContainer">
+                <button class="cowButton" onclick="purchaseLanguage('cow', 'cow'); activateLanguage('cow')">Cow</button>
+                <span class="toolTipText">Cow is another esoteric programming language, known for its unusual syntax and complexity. It is designed to be more of a puzzle or a challenge than a practical language for software development. Cow, like Malbolge, is not used for real-world programming and is mainly used for fun and coding challenges.</span>
+            </div>
         </div>
 
 
