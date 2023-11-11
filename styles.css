@@ -24,7 +24,7 @@ body button {
 }
 
 
-.info {
+.topBanner {
     display: flex;
     justify-content: space-between;
 }
@@ -82,6 +82,15 @@ body button {
 }
 
 
+.upgrades {
+    background-color:burlywood;
+    height: 30px;
+    width: 30px;
+    margin: 2px;
+    display: none;
+}
+
+
 .ideContainer span {
     display: block;
 }
@@ -118,6 +127,7 @@ body button {
     opacity: 1;
 }
 
+
 .toolTipText {
     display: none;
     color: black;
@@ -136,18 +146,36 @@ body button {
 }
 
 
-.passiveContainer {
+.projectContainer {
     flex-wrap: wrap;
     display: none;
 }
 
 
-.passiveContainer div {
+.projectContainer button {
+    padding: 0;
+    margin: 0;
+    border: 2px solid black;
+    height: 124px;
+}
+
+
+.projectContainer div {
     margin: 5px;
     display: none;
 }
 
 
-.passiveContainer img {
-    width: 150px;
+.passiveImage {
+    border-radius: 5px;
+    width: 200px;
+    height: 120px;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.description {
+    width: 400px;
+    display: none;
 }

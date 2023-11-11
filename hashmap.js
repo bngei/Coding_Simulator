@@ -12,15 +12,15 @@ if(projectHashmap === null){
             increase: 5,
             totalOwned: 0
         },
-        weatherApp: {
+        portfolioWebsite: {
             cost: 500,
             increase: 10,
-            totalOwned: 0
+            totalOwned: 0 
         },
-        portfolioWebsite: {
+        weatherApp: {
             cost: 1000,
             increase: 50,
-            totalOwned: 0 
+            totalOwned: 0
         },
         blogPlatform: {
             cost: 5000,
@@ -56,6 +56,9 @@ if(projectHashmap === null){
             cost: 1000000000,
             increase: 100000,
             totalOwned: 0
+        },
+        displayProjectContainer: {
+            purchased: false,
         }
     }
     localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap))
@@ -69,7 +72,7 @@ if(languageHashmap === null){
     languageHashmap = {
         python: {
             cost: 0,
-            payout: 5,
+            payout: 59999999999999,
             purchased: false,
             active: false,
             code: [
@@ -85,7 +88,7 @@ if(languageHashmap === null){
             active: false,
             code: [
                 '<p>Hello World!</p>',
-                '<p>Value: 25</p>',
+                '<p>Value: 50</p>',
                 '<p>25+25</p>'
             ]
         },
@@ -120,7 +123,7 @@ if(languageHashmap === null){
                 
                 'print("Hello World!")',
                 'value <- 50000',
-                'return(250000+250000)'
+                'return(25000+25000)'
             ]
         },
         mysql: {
@@ -152,7 +155,7 @@ if(languageHashmap === null){
             active: false,
             code: [
                 "msg db 'Hello, world!', 0xa",
-                'value db 5',
+                'value db 50000000',
                 'mov eax, 50000000'
             ]
         },

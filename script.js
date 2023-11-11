@@ -54,6 +54,10 @@ function purchaseProject(currentProject, nextProject){
         displayInfo(nextProject);
         displayInfo(currentProject);
 
+        // Displaying the current project's upgrade
+        console.log(currentProject + "Upgrade")
+        document.getElementById(currentProject + "Upgrade").style.display = "block";
+
         // Updating the local storage
         localStorage.setItem("total", total);
         localStorage.setItem("passive", passive);
@@ -70,7 +74,7 @@ function purchaseLanguage(currentLanguage, nextLanguage){
         totalDisplay.textContent = total;
         document.getElementsByClassName(nextLanguage + "Button")[0].style.display = "flex";
         localStorage.setItem("total", total);
-        localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));
+        localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));  
     }
 } 
 
@@ -125,18 +129,18 @@ function displayInfo(project){
 
 
 // Displaying the passive container
-function displayPassiveContainer(){
-    const container = document.getElementsByClassName("passiveContainer")[0];
+function displayProjectContainer(){
+    const container = document.getElementsByClassName("projectContainer")[0];
     if(container.style.display == "none"){
+        projectHashmap["displayProjectContainer"].purchased = true;
         container.style.display = "flex";
-        let passiveContainer = document.querySelector('.passiveContainer');
-        let containerElements = passiveContainer.querySelectorAll('.passiveContainer > div[class$="Container"]');
+        let projectContainer = document.querySelector('.projectContainer');
+        let containerElements = projectContainer.querySelectorAll('.projectContainer > div[class$="Container"]');
 
         for(let i = 0; i < containerElements.length; i++){
             let className = containerElements[i].className;
             className = className.substring(0, className.length - "Container".length);
             displayInfo(className);
-
             if(projectHashmap[className].totalOwned > 0){
                 containerElements[i].style.display = "block";
             } else {
@@ -157,6 +161,28 @@ function displayActiveContainer(){
         container.style.display = "flex";   
     } else {
         container.style.display = "none";
+    }
+}
+
+
+// Displaying the description for each passive projects
+function displayDescription(){
+    let infoElements = document.querySelectorAll('.info');
+    let descriptionElements = document.querySelectorAll('.description');
+    if(infoElements[0].style.display === "none"){
+        for(let i = 0; i < infoElements.length; i++){
+            infoElements[i].style.display = "block";
+        }
+        for(let i = 0; i < descriptionElements.length; i++){
+            descriptionElements[i].style.display = "none";
+        }   
+    } else {
+        for(let i = 0; i < infoElements.length; i++){
+            infoElements[i].style.display = "none";
+        }
+        for(let i = 0; i < descriptionElements.length; i++){
+            descriptionElements[i].style.display = "block";
+        }
     }
 }
 
@@ -189,6 +215,17 @@ function displayIdeContainer(){
 }
 
 
+// Displaying the upgrade container
+function displayUpgradeContainer() {
+    const container = document.getElementsByClassName("upgradeContainer")[0];
+    if(container.style.display === "none"){
+        container.style.display = "flex";
+    } else {
+        container.style.display = "none";
+    }
+}
+
+
 // Updating the new code line 
 function updateCode(language){
     const codeElement = document.getElementsByClassName("code")[0];
@@ -200,7 +237,6 @@ function updateCode(language){
     } else {
         index = 0;
     }
-    console.log(hashmap[index])
     if(language === "html"){
         codeElement.textContent = "Code the following line:\n" + hashmap[index];
     } else {
@@ -220,6 +256,12 @@ function enterCode(){
         updateCode(activeLanguage);
     } else {
         console.log("Syntax Error");
+    }
+
+    if(projectHashmap["displayProjectContainer"].purchased == false && total >= 10){
+        projectHashmap["displayProjectContainer"].purchased = true;
+        localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
+        displayProjectContainer();
     }
 }
 

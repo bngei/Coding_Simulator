@@ -8,7 +8,7 @@
     <title>Coding Simulator</title>
 </head>
 <body>
-    <div class="info">
+    <div class="topBanner">
         <div class="displays">
             <div class="totalDisplay">
                 <p><span class="totalDisplay"></span></p>
@@ -27,7 +27,9 @@
     <div class="buttonContainer">
         <button class="languageButton" onclick="displayActiveContainer()">Learn Languages</button>
         <button class="ideButton" onclick="displayIdeContainer()">IDE</button>
-        <button class="shopButton" onclick="displayPassiveContainer()">Shop</button>
+        <button class="projectButton" onclick="displayProjectContainer()">Projects</button>
+        <button class="upgradeButton" onclick="displayUpgradeContainer()">Upgrades</button>
+        <button class="descriptionButton" onclick="displayDescription()">Descriptions</button>
         <button class="restartButton" onclick="restartGame()">Restart Game</button>
     </div>
 
@@ -77,154 +79,172 @@
 
 
         <div class="ideContainer" style="display: block">
+            <div class="upgradeContainer" style="display: none">
+                <button class="upgrades" id="basicWebsiteUpgrade"></button>
+                <button class="upgrades" id="toDoListUpgrade"></button>
+                <button class="upgrades" id="portfolioWebsiteUpgrade"></button>
+                <button class="upgrades" id="weatherAppUpgrade"></button>
+                <button class="upgrades" id="blogPlatformUpgrade"></button>
+                <button class="upgrades" id="eCommerceWebsiteUpgrade"></button>
+                <button class="upgrades" id="mobileAppUpgrade"></button>
+                <button class="upgrades" id="socialMediaPlatformUpgrade"></button>
+                <button class="upgrades" id="videoGameUpgrade"></button>
+                <button class="upgrades" id="searchEngineUpgrade"></button>
+                <button class="upgrades" id="operatingSystemUpgrade"></button>
+                <button class="upgrades" id="projectUpgrade"></button>
+                <button class="upgrades" id="languageUpgrade"></button>
+            </div>
             <span class="code" style="display: block"></span>
             <textarea class="ideTextarea" placeholder="Select a language to begin coding."></textarea>
             <button class="enterButton" onclick="enterCode()" style="display: block">Enter</button>
         </div>
     
         
-        <div class="passiveContainer" style="display: none">
-
+        <div class="projectContainer" style="display: none">
             <div class="basicWebsiteContainer" style="display: block">
                 <button class="basicWebsiteButton" onclick="purchaseProject('basicWebsite', 'toDoList')">
-                    <img class="basicWebsiteImage" src="Images/basicWebsiteImage.webp" alt="Basic Website" style="width: 150px">
+                    <img class="passiveImage" src="Images/basicWebsiteImage.webp" alt="Basic Website">
                 </button>
                 <div class="basicWebsiteInfo" style="display: block">
-                    <p>Basic Website</p>
-                    <p>Cost: $<span class="basicWebsiteCost"></span></p>
-                    <p>Increase: $<span class="basicWebsiteIncrease"></span></p>
-                    <p>Total Owned: <span class="basicWebsiteTotalOwned"></span></p>
+                    <p class="info">Basic Website</p>
+                    <p class="info">Cost: $<span class="basicWebsiteCost"></span></p>
+                    <p class="info">Increase: $<span class="basicWebsiteIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="basicWebsiteTotalOwned"></span></p>
+                    <p class="description" style="display: none">In this project, you'll embark on a journey to create a simple static website for a local business or personal blog. You'll dive deep into the fundamentals of web development, learning how to structure web pages with HTML and style them using CSS. You'll gain an understanding of responsive design and accessibility, ensuring your website is user-friendly and visually appealing across various devices.</p>
                 </div>
             </div>
 
             <div class="toDoListContainer">
-                <button class="toDoListButton" onclick="purchaseProject('toDoList', 'weatherApp')">
-                    <img class="toDoListImage" src="Images/toDoListImage.png" alt="To-Do List">
+                <button class="toDoListButton" onclick="purchaseProject('toDoList', 'portfolioWebsite')">
+                    <img class="passiveImage" src="Images/toDoListImage.png" alt="To-Do List">
                 </button>
                 <div class="toDoListInfo" style="display: block">
-                    <p>To-Do-List Application</p>
-                    <p>Cost: $<span class="toDoListCost"></span></p>
-                    <p>Increase: $<span class="toDoListIncrease"></span></p>
-                    <p>Total Owned: <span class="toDoListTotalOwned"></span></p>
+                    <p class="info">To-Do-List Application</p>
+                    <p class="info">Cost: $<span class="toDoListCost"></span></p>
+                    <p class="info">Increase: $<span class="toDoListIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="toDoListTotalOwned"></span></p>
+                    <p class="description" style="display: none">Building a to-do list application is an excellent way to introduce interactivity to your web projects. You'll use HTML for structuring your app, CSS for styling, and JavaScript for creating the dynamic functionality. This project will also introduce you to local storage, allowing users to save their to-do lists even after closing the browser.</p>
                 </div>
             </div>  
 
-            <div class="weatherAppContainer">
-                <button class="weatherAppButton" onclick="purchaseProject('weatherApp', 'portfolioWebsite')">
-                    <img class="weatherAppImage" src="Images/weatherAppImage.jpg" alt="Weather App">
+            <div class="portfolioWebsiteContainer">
+                <button class="portfolioWebsiteButton" onclick="purchaseProject('portfolioWebsite', 'weatherApp')">
+                    <img class="passiveImage" src="Images/portfolioWebsiteImage.png" alt="Portfolio Website">
                 </button>
-                <div class="weatherAppInfo" style="display: block">
-                    <p>Weather Application</p>
-                    <p>Cost: $<span class="weatherAppCost"></span></p>
-                    <p>Increase: $<span class="weatherAppIncrease"></span></p>
-                    <p>Total Owned: <span class="weatherAppTotalOwned"></span></p>
+                <div class="portfolioWebsiteInfo" style="display: block">
+                    <p class="info">Portfolio Website</p>
+                    <p class="info">Cost: $<span class="portfolioWebsiteCost"></span></p>
+                    <p class="info">Increase: $<span class="portfolioWebsiteIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="portfolioWebsiteTotalOwned"></span></p>
+                    <p class="description" style="display: none">Crafting an interactive portfolio website involves blending creativity with technical skills. You'll work with HTML, CSS, and possibly JavaScript to showcase your work in a visually compelling manner. You'll learn about animations, responsive design, and user experience principles. This project will help you market your skills and impress potential employers or clients.</p>
                 </div>
             </div>
 
-            <div class="portfolioWebsiteContainer">
-                <button class="portfolioWebsiteButton" onclick="purchaseProject('portfolioWebsite', 'blogPlatform')">
-                    <img class="portfolioWebsiteImage" src="Images/portfolioWebsiteImage.png" alt="Portfolio Website">
+            <div class="weatherAppContainer">
+                <button class="weatherAppButton" onclick="purchaseProject('weatherApp', 'blogPlatform')">
+                    <img class="passiveImage" src="Images/weatherAppImage.jpg" alt="Weather App">
                 </button>
-                <div class="portfolioWebsiteInfo" style="display: block">
-                    <p>Portfolio Website</p>
-                    <p>Cost: $<span class="portfolioWebsiteCost"></span></p>
-                    <p>Increase: $<span class="portfolioWebsiteIncrease"></span></p>
-                    <p>Total Owned: <span class="portfolioWebsiteTotalOwned"></span></p>
+                <div class="weatherAppInfo" style="display: block">
+                    <p class="info">Weather Application</p>
+                    <p class="info">Cost: $<span class="weatherAppCost"></span></p>
+                    <p class="info">Increase: $<span class="weatherAppIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="weatherAppTotalOwned"></span></p>
+                    <p class="description" style="display: none">This project takes you into the world of API integration. You'll develop a weather app that fetches and displays real-time weather data from external APIs. You'll use HTML and CSS for the front end and JavaScript to make API requests and handle responses. You'll gain insights into data retrieval, parsing, and presentation.</p>
                 </div>
             </div>
 
             <div class="blogPlatformContainer">
                 <button class="blogPlatformButton" onclick="purchaseProject('blogPlatform', 'eCommerceWebsite')">
-                    <img class="blogPlatformImage" src="Images/blogPlatformImage.webp" alt="Blog Platform">
+                    <img class="passiveImage" src="Images/blogPlatformImage.webp" alt="Blog Platform">
                 </button>
                 <div class="blogPlatformInfo" style="display: block">
-                    <p>Blog Platform</p>
-                    <p>Cost: $<span class="blogPlatformCost"></span></p>
-                    <p>Increase: $<span class="blogPlatformIncrease"></span></p>
-                    <p>Total Owned: <span class="blogPlatformTotalOwned"></span></p>
+                    <p class="info">Blog Platform</p>
+                    <p class="info">Cost: $<span class="blogPlatformCost"></span></p>
+                    <p class="info">Increase: $<span class="blogPlatformIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="blogPlatformTotalOwned"></span></p>
+                    <p class="description" style="display: none">Creating a basic content management system (CMS) for blogging is a more advanced endeavor. You'll delve into back-end development by setting up databases and implementing user authentication. In addition to HTML, CSS, and JavaScript, you'll explore server-side technologies such as Node.js, Python, or PHP. This project equips you with skills in handling user-generated content and security.</p>
                 </div>
             </div>
 
             <div class="eCommerceWebsiteContainer">
                 <button class="eCommerceWebsiteButton" onclick="purchaseProject('eCommerceWebsite', 'mobileApp')">
-                    <img class="eCommerceWebsiteImage" src="Images/eCommerceWebsiteImage.webp" alt="E-Commerce Site">
+                    <img class="passiveImage" src="Images/eCommerceWebsiteImage.webp" alt="E-Commerce Site">
                 </button>
                 <div class="eCommerceWebsiteInfo" style="display: block">
-                    <p>E-Commerce Website</p>
-                    <p>Cost: $<span class="eCommerceWebsiteCost"></span></p>
-                    <p>Increase: $<span class="eCommerceWebsiteIncrease"></span></p>
-                    <p>Total Owned: <span class="eCommerceWebsiteTotalOwned"></span></p>
+                    <p class="info">E-Commerce Website</p>
+                    <p class="info">Cost: $<span class="eCommerceWebsiteCost"></span></p>
+                    <p class="info">Increase: $<span class="eCommerceWebsiteIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="eCommerceWebsiteTotalOwned"></span></p>
+                    <p class="description" style="display: none">Developing a small e-commerce website goes beyond front-end work. You'll delve into back-end development, including database management and payment integration. Tools like HTML, CSS, JavaScript, and server-side technologies will be at your disposal. This project is your gateway to understanding the complexities of online transactions and user experience optimization.</p>
                 </div>
             </div>
 
             <div class="mobileAppContainer">
                 <button class="mobileAppButton" onclick="purchaseProject('mobileApp', 'socialMediaPlatform')">
-                    <img class="mobileAppImage" src="Images/mobileAppImage.png" alt="Mobile App">
+                    <img class="passiveImage" src="Images/mobileAppImage.png" alt="Mobile App">
                 </button>
                 <div class="mobileAppInfo" style="display: block">
-                    <p>Mobile App</p>
-                    <p>Cost: $<span class="mobileAppCost"></span></p>
-                    <p>Increase: $<span class="mobileAppIncrease"></span></p>
-                    <p>Total Owned: <span class="mobileAppTotalOwned"></span></p>
+                    <p class="info">Mobile App</p>
+                    <p class="info">Cost: $<span class="mobileAppCost"></span></p>
+                    <p class="info">Increase: $<span class="mobileAppIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="mobileAppTotalOwned"></span></p>
+                    <p class="description" style="display: none">Designing and building a mobile app is a versatile project. You can choose cross-platform development using React Native or Flutter, or go native for iOS and Android. You'll gain experience in creating a functional app, learning about app architecture, user interface design, and integration with device features like GPS, camera, and notifications.</p>
                 </div>
             </div>
 
             <div class="socialMediaPlatformContainer">
                 <button class="socialMediaPlatformButton" onclick="purchaseProject('socialMediaPlatform', 'videoGame')">
-                    <img class="socialMediaPlatformImage" src="Images/socialMediaPlatformImage.jpg" alt="Social Media Platform">
+                    <img class="passiveImage" src="Images/socialMediaPlatformImage.jpg" alt="Social Media Platform">
                 </button>
                 <div class="socialMediaPlatformInfo" style="display: block">
-                    <p>Social Media Platform</p>
-                    <p>Cost: $<span class="socialMediaPlatformCost"></span></p>
-                    <p>Increase: $<span class="socialMediaPlatformIncrease"></span></p>
-                    <p>Total Owned: <span class="socialMediaPlatformTotalOwned"></span></p>
+                    <p class="info">Social Media Platform</p>
+                    <p class="info">Cost: $<span class="socialMediaPlatformCost"></span></p>
+                    <p class="info">Increase: $<span class="socialMediaPlatformIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="socialMediaPlatformTotalOwned"></span></p>
+                    <p class="description" style="display: none">Building a simplified social media platform involves creating user profiles, enabling posts, and facilitating user interactions. You'll master user authentication and database management. HTML, CSS, JavaScript, and server-side technologies come together in this project to help you create a dynamic and engaging online community.</p>
                 </div>
             </div>
             
             <div class="videoGameContainer">
                 <button class="videoGameButton" onclick="purchaseProject('videoGame', 'searchEngine')">
-                    <img class="videoGameImage" src="Images/videoGameImage.jpg" alt="Video Game">
+                    <img class="passiveImage" src="Images/videoGameImage.jpg" alt="Video Game">
                 </button>
                 <div class="videoGameInfo" style="display: block">
-                    <p>Video Game</p>
-                    <p>Cost: $<span class="videoGameCost"></span></p>
-                    <p>Increase: $<span class="videoGameIncrease"></span></p>
-                    <p>Total Owned: <span class="videoGameTotalOwned"></span></p>
+                    <p class="info">Video Game</p>
+                    <p class="info">Cost: $<span class="videoGameCost"></span></p>
+                    <p class="info">Increase: $<span class="videoGameIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="videoGameTotalOwned"></span></p>
+                    <p class="description" style="display: none">Crafting your own video game is a thrilling journey into game development. You can use powerful engines like Unity or Unreal Engine. You'll dive into 2D or 3D game design, character development, physics, and gameplay mechanics. This project introduces you to scripting, game optimization, and testing.</p>
                 </div>
             </div>
 
             <div class="searchEngineContainer">
                 <button class="searchEngineButton" onclick="purchaseProject('searchEngine', 'operatingSystem')">
-                    <img class="searchEngineImage" src="Images/searchEngineImage.webp" alt="Search Engine">
+                    <img class="passiveImage" src="Images/searchEngineImage.webp" alt="Search Engine">
                 </button>
                 <div class="searchEngineInfo" style="display: block">
-                    <p>Search Engine</p>
-                    <p>Cost: $<span class="searchEngineCost"></span></p>
-                    <p>Increase: $<span class="searchEngineIncrease"></span></p>
-                    <p>Total Owned: <span class="searchEngineTotalOwned"></span></p>
+                    <p class="info">Search Engine</p>
+                    <p class="info">Cost: $<span class="searchEngineCost"></span></p>
+                    <p class="info">Increase: $<span class="searchEngineIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="searchEngineTotalOwned"></span></p>
+                    <p class="description" style="display: none">Developing a simplified search engine is a deep dive into information retrieval and web technologies. You'll explore web crawling, indexing, and ranking algorithms. Tools such as Python, web scraping libraries, and data structures will be at your disposal. You'll experiment with creating custom search algorithms, giving you insights into how search engines like Google work.</p>
                 </div>
             </div>
 
             <div class="operatingSystemContainer">
                 <button class="operatingSystemButton" onclick="purchaseProject('operatingSystem', 'operatingSystem')">
-                    <img class="operatingSystemImage" src="Images/operatingSystemImage.jpg" alt="Operating System">
+                    <img class="passiveImage" src="Images/operatingSystemImage.jpg" alt="Operating System">
                 </button>
                 <div class="operatingSystemInfo" style="display: block">
-                    <p>Operating System</p>
-                    <p>Cost: $<span class="operatingSystemCost"></span></p>
-                    <p>Increase: $<span class="operatingSystemIncrease"></span></p>
-                    <p>Total Owned: <span class="operatingSystemTotalOwned"></span></p>
+                    <p class="info">Operating System</p>
+                    <p class="info">Cost: $<span class="operatingSystemCost"></span></p>
+                    <p class="info">Increase: $<span class="operatingSystemIncrease"></span></p>
+                    <p class="info">Total Owned: <span class="operatingSystemTotalOwned"></span></p>
+                    <p class="description" style="display: none">Embarking on the formidable challenge of crafting your own operating system represents an unparalleled dive into the technical intricacies of computer science. This advanced project demands an exhaustive understanding of computer architecture and an adept command of low-level programming languages. In the initial stages, you will immerse yourself in the meticulous development of a bootloader or kernel—the foundational components that lay the groundwork for the entire operating system. This phase serves as a comprehensive exploration into the intricate details of memory management, where you will master the fine art of allocating and deallocating resources with precision, ensuring optimal system performance. As you progress, the project unveils the complexities of hardware communication, demanding an in-depth understanding of interfacing with diverse hardware components. This facet of the endeavor entails navigating the intricacies of device drivers, interrupt handling, and input/output operations—a technical ballet that bridges the communication chasm between the operating system and the underlying hardware architecture. Moreover, the development of an operating system necessitates a profound comprehension of system processes. You will delve into the intricacies of process scheduling algorithms, synchronization mechanisms, and resource allocation strategies. This technical exploration unveils the inner workings of multitasking environments, where threads and processes harmoniously coexist, delivering a seamless user experience. In this journey, you will wield low-level programming languages such as Assembly and C, honing your skills in translating abstract architectural concepts into executable code. The project demands a meticulous attention to detail, as you grapple with the complexities of system calls, interrupt service routines, and memory addressing. Creating your own operating system is not just a project; it is an immersion into the heart of computing systems—a technical odyssey that empowers you with a mastery of low-level programming, memory optimization, hardware interaction, and system orchestration. As you traverse this demanding terrain, you will cultivate not only technical proficiency but also an unparalleled depth of insight into the foundational elements that govern the digital landscape.</p>
                 </div>
             </div>
         </div>
-
     </div>
-
-
-    <div class="upgradeContainer">
-        
-    </div>
-    
     <script src="hashmap.js"></script>
     <script src="script.js"></script>
 </body>
