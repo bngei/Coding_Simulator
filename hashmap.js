@@ -1,11 +1,12 @@
-// Creating hashmap
+// Creating project hashmap
 let projectHashmap = localStorage.getItem("projectHashmap");
 if(projectHashmap === null){
     projectHashmap = {
         basicWebsite: {
             cost: 10,
             increase: 1,
-            totalOwned: 0
+            totalOwned: 0,
+            display: false
         },
         toDoList: {
             cost: 50,
@@ -56,15 +57,13 @@ if(projectHashmap === null){
             cost: 1000000000,
             increase: 100000,
             totalOwned: 0
-        },
-        displayProjectContainer: {
-            purchased: false,
         }
     }
     localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap))
 } else {
     projectHashmap = JSON.parse(projectHashmap);
 }
+
 
 // Creating language hashmap
 let languageHashmap = localStorage.getItem("languageHashmap");
@@ -182,4 +181,80 @@ if(languageHashmap === null){
     localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap))
 } else {
     languageHashmap = JSON.parse(languageHashmap);
+}
+
+
+// Creating upgrade hashmap
+let upgradeHashmap = localStorage.getItem("upgradeHashmap");
+if(upgradeHashmap === null){
+    upgradeHashmap = {
+        basicWebsite: {
+            cost: 100,
+            purchased: false,
+            display: false
+        },
+        toDoList: {
+            cost: 500,
+            purchased: false,
+            display: false
+        },
+        portfolioWebsite: {
+            cost: 5000,
+            purchased: false,
+            display: false
+        },
+        weatherApp: {
+            cost: 10000,
+            purchased: false,
+            display: false
+        },
+        blogPlatform: {
+            cost: 50000,
+            purchased: false,
+            display: false
+        },
+        eCommerceWebsite: {
+            cost: 200000,
+            purchased: false,
+            display: false
+        },
+        mobileApp: {
+            cost: 1000000,
+            purchased: false,
+            display: false
+        },
+        socialMediaPlatform: {
+            cost: 5000000,
+            purchased: false,
+            display: false
+        },
+        videoGame: {
+            cost: 10000000,
+            purchased: false,
+            display: false
+        },
+        searchEngine: {
+            cost: 100000000,
+            purchased: false,
+            display: false
+        },
+        operatingSystem: {
+            cost: 10000000000,
+            purchased: false,
+            display: false
+        },
+        projects: {
+            cost: 1,
+            purchased: false,
+            display: false
+        },
+        languages: {
+            cost: 2,
+            purchased: false,
+            display: false
+        }
+    }
+    localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap))
+} else {
+    upgradeHashmap = JSON.parse(upgradeHashmap);
 }

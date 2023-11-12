@@ -33,20 +33,43 @@ function increaseTotal(value){
 }
 
 
+// Update passive income
+function calculatePassive(){
+    let newPassive = 0;
+    
+    for(let project in projectHashmap){
+        if(projectHashmap[project].totalOwned > 0){
+            newPassive += (parseFloat(projectHashmap[project].increase) * parseFloat(projectHashmap[project].totalOwned)).toFixed(2);
+        }
+    }
+    console.log(newPassive)
+    passiveDisplay.textContent = newPassive + " per second";
+    localStorage.setItem("passive", newPassive);
+}
+
+
+// Save hashmaps in local storage
+function saveHashmaps(){
+    localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
+    localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));
+    localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap));
+}
+
+
 // Function that purchases a project and outputs the information
 function purchaseProject(currentProject, nextProject){
     if(total >= projectHashmap[currentProject].cost){
         // Buying the project
         projectHashmap[currentProject].totalOwned += 1;
-
-        passive += parseInt(projectHashmap[currentProject].increase);
-        total -= parseInt(projectHashmap[currentProject].cost);
+        passive += parseFloat(projectHashmap[currentProject].increase);
+        total -= parseFloat(projectHashmap[currentProject].cost);
 
         // Updating the cost
-        projectHashmap[currentProject].cost = Math.floor(projectHashmap[currentProject].cost * 1.15);
+        projectHashmap[currentProject].cost = (projectHashmap[currentProject].cost * 1.15).toFixed(2);
 
         // Displaying all information
         passiveDisplay.textContent = passive + " per second";
+        
         totalDisplay.textContent = total;
 
         // Displaying next project
@@ -55,13 +78,15 @@ function purchaseProject(currentProject, nextProject){
         displayInfo(currentProject);
 
         // Displaying the current project's upgrade
-        console.log(currentProject + "Upgrade")
-        document.getElementById(currentProject + "Upgrade").style.display = "block";
+        if(upgradeHashmap[currentProject].purchased === false){
+            upgradeHashmap[currentProject].display = true;
+            document.getElementById(currentProject + "Upgrade").style.display = "block";
+        }
 
         // Updating the local storage
         localStorage.setItem("total", total);
         localStorage.setItem("passive", passive);
-        localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
+        saveHashmaps();
     }
 }
 
@@ -77,6 +102,29 @@ function purchaseLanguage(currentLanguage, nextLanguage){
         localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));  
     }
 } 
+
+
+// Purchases an upgrade and hide it from the upgrade container
+function purchaseUpgrade(project){
+    if(total >= upgradeHashmap[project].cost){
+        // Buying and hiding the upgrade
+        total -= upgradeHashmap[project].cost;
+        totalDisplay.textContent = total;
+        upgradeHashmap[project].purchased = true;
+        upgradeHashmap[project].display = false;
+        document.getElementById(project + "Upgrade").style.display = "none";
+
+        // Increasing the income of the project by 15%
+        projectHashmap[project].increase = (projectHashmap[project].increase * 1.15).toFixed(2);
+
+        // localStorage.setItem("passive", passive + )
+        displayInfo(project);
+        calculatePassive();
+        localStorage.setItem("total", total);
+        localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap));
+        localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
+    }
+}
 
 
 // Activate a language and deactivate the others
@@ -132,7 +180,7 @@ function displayInfo(project){
 function displayProjectContainer(){
     const container = document.getElementsByClassName("projectContainer")[0];
     if(container.style.display == "none"){
-        projectHashmap["displayProjectContainer"].purchased = true;
+        projectHashmap["basicWebsite"].display = true;
         container.style.display = "flex";
         let projectContainer = document.querySelector('.projectContainer');
         let containerElements = projectContainer.querySelectorAll('.projectContainer > div[class$="Container"]');
@@ -217,11 +265,21 @@ function displayIdeContainer(){
 
 // Displaying the upgrade container
 function displayUpgradeContainer() {
-    const container = document.getElementsByClassName("upgradeContainer")[0];
-    if(container.style.display === "none"){
-        container.style.display = "flex";
+    const upgradeContainer = document.getElementsByClassName("upgradeContainer")[0];
+    const container = document.getElementsByClassName("upgrades");
+    if(upgradeContainer.style.display === "none"){
+        upgradeContainer.style.display = "flex";
+        for(let i = 0; i < container.length; i++){
+            let id = container[i].id;
+            id = id.substring(0, id.length - "Upgrade".length);
+            if(upgradeHashmap[id].display === true && upgradeHashmap[id].purchased === false){
+                document.getElementById(id + "Upgrade").style.display = "flex";
+            } else {
+                document.getElementById(id + "Upgrade").style.display = "none";
+            }
+        }
     } else {
-        container.style.display = "none";
+        upgradeContainer.style.display = "none";
     }
 }
 
@@ -258,9 +316,9 @@ function enterCode(){
         console.log("Syntax Error");
     }
 
-    if(projectHashmap["displayProjectContainer"].purchased == false && total >= 10){
-        projectHashmap["displayProjectContainer"].purchased = true;
-        localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
+    if(projectHashmap["basicWebsite"].display == false && total >= 10){
+        projectHashmap["basicWebsite"].display = true;
+        saveHashmaps();
         displayProjectContainer();
     }
 }
@@ -293,3 +351,17 @@ getJoke();
 setInterval(getJoke, 20000);
 displayLanguages();
 passiveImplementation();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
