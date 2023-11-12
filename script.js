@@ -1,14 +1,14 @@
 // Global variables
 let totalDisplay = document.getElementsByClassName("totalDisplay")[0];
 let passiveDisplay = document.getElementsByClassName("passiveDisplay")[0];
-let total = parseFloat(localStorage.getItem("total")) || 0;
-let passive = parseFloat(localStorage.getItem("passive")) || 0;
+let total = parseFloat(localStorage.getItem("total")) || 0.00;
+let passive = parseFloat(localStorage.getItem("passive")) || 0.00;
 
 
 // Initalizing total counter
 if(total === null || isNaN(total)){
-    total = parseFloat(0);
-    localStorage.setItem("total", 0);
+    total = parseFloat(0.00);
+    localStorage.setItem("total", 0.00);
 } else {
     total = parseFloat(total);
     totalDisplay.textContent = total;
@@ -17,8 +17,8 @@ if(total === null || isNaN(total)){
 
 // Initalizing passive counter
 if(passive === null){
-    passive = 0;
-    localStorage.setItem("passive", 0);
+    passive = 0.00;
+    localStorage.setItem("passive", 0.00);
 } else {
     passive = parseFloat(passive);
     passiveDisplay.textContent = passive + " per second";
@@ -35,18 +35,17 @@ function increaseTotal(value){
 
 // Update passive income
 function calculatePassive(){
-    let newPassive = 0;
+    let newPassive = 0.00;
     
     for(let project in projectHashmap){
         if(projectHashmap[project].totalOwned > 0){
             
-            let firstValue = parseFloat(projectHashmap[project].increase);
-            let secondValue = parseFloat(projectHashmap[project].totalOwned);
+            let increase = parseFloat(projectHashmap[project].increase);
+            let totalOwned = parseFloat(projectHashmap[project].totalOwned);
 
-            newPassive += parseFloat((firstValue * secondValue).toFixed(2));
+            newPassive += parseFloat((increase * totalOwned).toFixed(2));
         }
     }
-    console.log(newPassive);   
     passiveDisplay.textContent = newPassive + " per second";
     localStorage.setItem("passive", newPassive);
 }
@@ -127,7 +126,6 @@ function purchaseUpgrade(project){
         localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap));
         localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
         calculatePassive();
-
     }
 }
 

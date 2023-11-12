@@ -4,58 +4,58 @@ if(projectHashmap === null){
     projectHashmap = {
         basicWebsite: {
             cost: 10,
-            increase: 1,
+            increase: 1.00,
             totalOwned: 0,
             display: false
         },
         toDoList: {
-            cost: 50,
-            increase: 5,
+            cost: 50.00,
+            increase: 5.00,
             totalOwned: 0
         },
         portfolioWebsite: {
-            cost: 500,
-            increase: 10,
+            cost: 500.00,
+            increase: 10.00,
             totalOwned: 0 
         },
         weatherApp: {
-            cost: 1000,
-            increase: 50,
+            cost: 1000.00,
+            increase: 50.00,
             totalOwned: 0
         },
         blogPlatform: {
-            cost: 5000,
-            increase: 100,
+            cost: 5000.00,
+            increase: 100.00,
             totalOwned: 0
         },
         eCommerceWebsite: {
-            cost: 20000,
-            increase: 500,
+            cost: 20000.00,
+            increase: 500.00,
             totalOwned: 0
         },
         mobileApp: {
-            cost: 100000,
-            increase: 1000,
+            cost: 100000.00,
+            increase: 1000.00,
             totalOwned: 0
         },
         socialMediaPlatform: {
-            cost: 500000,
-            increase: 5000,
+            cost: 500000.00,
+            increase: 5000.00,
             totalOwned: 0
         },
         videoGame: {
-            cost: 1000000,
-            increase: 10000,
+            cost: 1000000.00,
+            increase: 10000.00,
             totalOwned: 0
         },
         searchEngine: {
-            cost: 10000000,
-            increase: 50000,
+            cost: 10000000.00,
+            increase: 50000.00,
             totalOwned: 0
         },
         operatingSystem: {
-            cost: 1000000000,
-            increase: 100000,
+            cost: 1000000000.00,
+            increase: 100000.00,
             totalOwned: 0
         }
     }
