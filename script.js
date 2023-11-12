@@ -1,16 +1,16 @@
 // Global variables
 let totalDisplay = document.getElementsByClassName("totalDisplay")[0];
 let passiveDisplay = document.getElementsByClassName("passiveDisplay")[0];
-let total = parseInt(localStorage.getItem("total")) || 0;
-let passive = parseInt(localStorage.getItem("passive")) || 0;
+let total = parseFloat(localStorage.getItem("total")) || 0;
+let passive = parseFloat(localStorage.getItem("passive")) || 0;
 
 
 // Initalizing total counter
 if(total === null || isNaN(total)){
-    total = parseInt(0);
+    total = parseFloat(0);
     localStorage.setItem("total", 0);
 } else {
-    total = parseInt(total);
+    total = parseFloat(total);
     totalDisplay.textContent = total;
 }
 
@@ -20,7 +20,7 @@ if(passive === null){
     passive = 0;
     localStorage.setItem("passive", 0);
 } else {
-    passive = parseInt(passive);
+    passive = parseFloat(passive);
     passiveDisplay.textContent = passive + " per second";
 }
 
@@ -39,10 +39,14 @@ function calculatePassive(){
     
     for(let project in projectHashmap){
         if(projectHashmap[project].totalOwned > 0){
-            newPassive += (parseFloat(projectHashmap[project].increase) * parseFloat(projectHashmap[project].totalOwned)).toFixed(2);
+            
+            let firstValue = parseFloat(projectHashmap[project].increase);
+            let secondValue = parseFloat(projectHashmap[project].totalOwned);
+
+            newPassive += parseFloat((firstValue * secondValue).toFixed(2));
         }
     }
-    console.log(newPassive)
+    console.log(newPassive);   
     passiveDisplay.textContent = newPassive + " per second";
     localStorage.setItem("passive", newPassive);
 }
@@ -68,7 +72,7 @@ function purchaseProject(currentProject, nextProject){
         projectHashmap[currentProject].cost = (projectHashmap[currentProject].cost * 1.15).toFixed(2);
 
         // Displaying all information
-        passiveDisplay.textContent = passive + " per second";
+        passiveDisplay.textContent = passive.toFixed(2) + " per second";
         
         totalDisplay.textContent = total;
 
@@ -87,13 +91,13 @@ function purchaseProject(currentProject, nextProject){
         localStorage.setItem("total", total);
         localStorage.setItem("passive", passive);
         saveHashmaps();
+        calculatePassive();
     }
 }
 
-
 // When a user purchases a new language the next one will be unlocked
 function purchaseLanguage(currentLanguage, nextLanguage){
-    if(total >= parseInt(languageHashmap[currentLanguage].cost) && languageHashmap[currentLanguage].purchased == false){
+    if(total >= parseFloat(languageHashmap[currentLanguage].cost) && languageHashmap[currentLanguage].purchased == false){
         total -= languageHashmap[currentLanguage].cost;
         languageHashmap[currentLanguage].purchased = true;
         totalDisplay.textContent = total;
@@ -119,10 +123,11 @@ function purchaseUpgrade(project){
 
         // localStorage.setItem("passive", passive + )
         displayInfo(project);
-        calculatePassive();
         localStorage.setItem("total", total);
         localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap));
         localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
+        calculatePassive();
+
     }
 }
 
@@ -158,8 +163,8 @@ function getActiveLanguage(){
 function passiveImplementation(){
     setInterval(function(){    
         total += passive;
-        localStorage.setItem("total", total);
-        totalDisplay.textContent = total;
+        localStorage.setItem("total", total.toFixed(2));
+        totalDisplay.textContent = total.toFixed(2);
     }, 1000);
 }
 
@@ -310,7 +315,7 @@ function enterCode(){
     if(codeString === userInput.value){
         userInput.value = "";
         const activeLanguage = getActiveLanguage();
-        increaseTotal(parseInt(languageHashmap[activeLanguage].payout));
+        increaseTotal(parseFloat(languageHashmap[activeLanguage].payout));
         updateCode(activeLanguage);
     } else {
         console.log("Syntax Error");
@@ -351,17 +356,3 @@ getJoke();
 setInterval(getJoke, 20000);
 displayLanguages();
 passiveImplementation();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
