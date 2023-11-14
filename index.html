@@ -14,7 +14,6 @@
                 <p><span class="totalDisplay"></span></p>
             </div>
             <div class="passiveDisplay">
-                <p>0.00 per second</p>
             </div>
         </div>
 
@@ -78,25 +77,31 @@
         </div>
 
 
-        <div class="ideContainer" style="display: block">
+        <div class="middleColumn" style="display: block">
             <div class="upgradeContainer" style="display: none">
-                <button class="upgrades" id="basicWebsiteUpgrade" onclick="purchaseUpgrade('basicWebsite')" style="display: flex"></button>
-                <button class="upgrades" id="toDoListUpgrade" onclick="purchaseUpgrade('toDoList')"></button>
-                <button class="upgrades" id="portfolioWebsiteUpgrade" onclick="purchaseUpgrade('portfolioWebsite')"></button>
-                <button class="upgrades" id="weatherAppUpgrade" onclick="purchaseUpgrade('weatherApp')"></button>
-                <button class="upgrades" id="blogPlatformUpgrade" onclick="purchaseUpgrade('blogPlatform')"></button>
-                <button class="upgrades" id="eCommerceWebsiteUpgrade" onclick="purchaseUpgrade('eCommerceWebsite')"></button>
-                <button class="upgrades" id="mobileAppUpgrade" onclick="purchaseUpgrade('mobileApp')"></button>
-                <button class="upgrades" id="socialMediaPlatformUpgrade" onclick="purchaseUpgrade('socialMediaPlatform')"></button>
-                <button class="upgrades" id="videoGameUpgrade" onclick="purchaseUpgrade('videoGame')"></button>
-                <button class="upgrades" id="searchEngineUpgrade" onclick="purchaseUpgrade('searchEngine')"></button>
-                <button class="upgrades" id="operatingSystemUpgrade" onclick="purchaseUpgrade('operatingSystem')"></button>
-                <button class="upgrades" id="projectsUpgrade" onclick="purchaseUpgrade('projects')"></button>
-                <button class="upgrades" id="languagesUpgrade" onclick="purchaseUpgrade('languages')"></button>
+                <span class="upgradeText"></span>
+                <div class="upgradeButtons" style="display: flex">
+                    <button class="upgrades" id="basicWebsiteUpgrade" onclick="purchaseUpgrade('basicWebsite')" onmouseover="setUpgradeText('basicWebsite')"></button>
+                    <button class="upgrades" id="toDoListUpgrade" onclick="purchaseUpgrade('toDoList')" onmouseover="setUpgradeText('toDoList')"></button>
+                    <button class="upgrades" id="portfolioWebsiteUpgrade" onclick="purchaseUpgrade('portfolioWebsite')"></button>
+                    <button class="upgrades" id="weatherAppUpgrade" onclick="purchaseUpgrade('weatherApp')"></button>
+                    <button class="upgrades" id="blogPlatformUpgrade" onclick="purchaseUpgrade('blogPlatform')"></button>
+                    <button class="upgrades" id="eCommerceWebsiteUpgrade" onclick="purchaseUpgrade('eCommerceWebsite')"></button>
+                    <button class="upgrades" id="mobileAppUpgrade" onclick="purchaseUpgrade('mobileApp')"></button>
+                    <button class="upgrades" id="socialMediaPlatformUpgrade" onclick="purchaseUpgrade('socialMediaPlatform')"></button>
+                    <button class="upgrades" id="videoGameUpgrade" onclick="purchaseUpgrade('videoGame')"></button>
+                    <button class="upgrades" id="searchEngineUpgrade" onclick="purchaseUpgrade('searchEngine')"></button>
+                    <button class="upgrades" id="operatingSystemUpgrade" onclick="purchaseUpgrade('operatingSystem')"></button>
+                    <button class="upgrades" id="projectsUpgrade" onclick="purchaseUpgrade('projects')"></button>
+                    <button class="upgrades" id="languagesUpgrade" onclick="purchaseUpgrade('languages')"></button>
+                </div>
             </div>
-            <span class="code" style="display: block"></span>
-            <textarea class="ideTextarea" placeholder="Select a language to begin coding."></textarea>
-            <button class="enterButton" onclick="enterCode()" style="display: block">Enter</button>
+
+            <div class="ideContainer">
+                <span class="code" style="display: block"></span>
+                <textarea class="ideTextarea" placeholder="Select a language to begin coding."></textarea>
+                <button class="enterButton" onclick="enterCode()" style="display: block">Enter</button>
+            </div>
         </div>
     
         
