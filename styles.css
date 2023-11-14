@@ -82,6 +82,12 @@ body button {
 }
 
 
+.upgradeContainer {
+    position: relative;
+    display: flex;
+}
+
+
 .upgrades {
     background-color:burlywood;
     height: 30px;
@@ -90,8 +96,27 @@ body button {
     display: none;
 }
 
+.upgradesText {
+    visibility: hidden;
+    width: 300px;
+    background-color: rgb(155, 115, 63);
+    border: 2px solid black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+  }
+  
+  .upgrades:hover .upgradesText {
+    visibility: visible;
+  }
 
-.ideContainer span {
+.middleColumn span {
     display: block;
 }
 
