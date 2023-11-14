@@ -1,7 +1,7 @@
 // Global variables
 let totalDisplay = document.getElementsByClassName("totalDisplay")[0];
 let passiveDisplay = document.getElementsByClassName("passiveDisplay")[0];
-let total = parseFloat(localStorage.getItem("total")) || 0.00;
+let total = parseFloat(localStorage.getItem("total")) || 0;
 let passive = parseFloat(localStorage.getItem("passive")) || 0.00;
 
 
@@ -11,7 +11,7 @@ if(total === null || isNaN(total)){
     localStorage.setItem("total", 0.00);
 } else {
     total = parseFloat(total);
-    totalDisplay.textContent = total;
+    totalDisplay.textContent = total.toFixed(2);
 }
 
 
@@ -21,14 +21,14 @@ if(passive === null){
     localStorage.setItem("passive", 0.00);
 } else {
     passive = parseFloat(passive);
-    passiveDisplay.textContent = passive + " per second";
+    passiveDisplay.textContent = passive.toFixed(2) + " per second";
 }
 
 
 // Adding incrementing functionality
 function increaseTotal(value){
     total += value;
-    totalDisplay.textContent = total;
+    totalDisplay.textContent = total.toFixed(2);
     localStorage.setItem("total", total);
 }
 
@@ -73,7 +73,7 @@ function purchaseProject(currentProject, nextProject){
         // Displaying all information
         passiveDisplay.textContent = passive.toFixed(2) + " per second";
         
-        totalDisplay.textContent = total;
+        totalDisplay.textContent = total.toFixed(2);
 
         // Displaying next project
         document.getElementsByClassName(nextProject + "Container")[0].style.display = "block"; 
@@ -99,7 +99,7 @@ function purchaseLanguage(currentLanguage, nextLanguage){
     if(total >= parseFloat(languageHashmap[currentLanguage].cost) && languageHashmap[currentLanguage].purchased == false){
         total -= languageHashmap[currentLanguage].cost;
         languageHashmap[currentLanguage].purchased = true;
-        totalDisplay.textContent = total;
+        totalDisplay.textContent = total.toFixed(2);
         document.getElementsByClassName(nextLanguage + "Button")[0].style.display = "flex";
         localStorage.setItem("total", total);
         localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));  
@@ -112,7 +112,7 @@ function purchaseUpgrade(project){
     if(total >= upgradeHashmap[project].cost){
         // Buying and hiding the upgrade
         total -= upgradeHashmap[project].cost;
-        totalDisplay.textContent = total;
+        totalDisplay.textContent = total.toFixed(2);
         upgradeHashmap[project].purchased = true;
         upgradeHashmap[project].display = false;
         document.getElementById(project + "Upgrade").style.display = "none";
@@ -271,7 +271,7 @@ function displayUpgradeContainer() {
     const upgradeContainer = document.getElementsByClassName("upgradeContainer")[0];
     const container = document.getElementsByClassName("upgrades");
     if(upgradeContainer.style.display === "none"){
-        upgradeContainer.style.display = "flex";
+        upgradeContainer.style.display = "block";
         for(let i = 0; i < container.length; i++){
             let id = container[i].id;
             id = id.substring(0, id.length - "Upgrade".length);
@@ -327,6 +327,18 @@ function enterCode(){
 }
 
 
+// Adds an event listener to the text area to listen for the enter key
+let ideTextarea = document.querySelector(".ideTextarea");
+if (ideTextarea) {
+    ideTextarea.addEventListener("keydown", function(event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault(); // Prevent the default behavior of the Enter key (new line)
+            enterCode();
+        }
+    });
+}
+
+
 // Restarting the game
 function restartGame(){
     localStorage.clear();
@@ -354,3 +366,15 @@ getJoke();
 setInterval(getJoke, 20000);
 displayLanguages();
 passiveImplementation();
+
+
+// TEMP
+function setUpgradeText(project){
+    // Get the upgradeText span element
+    let upgradeTextElement = document.querySelector('.upgradeText');
+        
+    // Set the content of the upgradeText span
+    if (upgradeTextElement) {
+        upgradeTextElement.textContent = upgradeHashmap[project].text;
+    }
+}
