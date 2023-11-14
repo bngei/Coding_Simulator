@@ -191,67 +191,80 @@ if(upgradeHashmap === null){
         basicWebsite: {
             cost: 100,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of basic websites by 15%"
         },
         toDoList: {
             cost: 500,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of to-do-lists by 15%"
         },
         portfolioWebsite: {
             cost: 5000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of portfolio websites by 15%"
         },
         weatherApp: {
             cost: 10000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of weather apps by 15%"
         },
         blogPlatform: {
             cost: 50000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of blog platforms by 15%"
         },
         eCommerceWebsite: {
             cost: 200000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of e-commerce websites by 15%"
         },
         mobileApp: {
             cost: 1000000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of mobile apps by 15%"
         },
         socialMediaPlatform: {
             cost: 5000000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of social media platforms by 15%"
         },
         videoGame: {
             cost: 10000000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of video games by 15%"
         },
         searchEngine: {
             cost: 100000000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of search engines by 15%"
         },
         operatingSystem: {
             cost: 10000000000,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of operating systems by 15%"
         },
         projects: {
             cost: 1,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of all projects by 15%"
         },
         languages: {
             cost: 2,
             purchased: false,
-            display: false
+            display: false,
+            text: "Increases the payout of coding by 15%"
         }
     }
     localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap))
