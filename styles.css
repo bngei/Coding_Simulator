@@ -96,6 +96,7 @@ body button {
     display: none;
 }
 
+
 .upgradesText {
     visibility: hidden;
     width: 300px;
@@ -111,14 +112,17 @@ body button {
     top: -5px;
     left: 105%;
   }
+
   
-  .upgrades:hover .upgradesText {
+.upgrades:hover .upgradesText {
     visibility: visible;
-  }
+}
+
 
 .middleColumn span {
     display: block;
 }
+
 
 .code {
     user-select: none;
