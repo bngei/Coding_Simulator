@@ -287,6 +287,18 @@ function displayUpgradeContainer() {
 }
 
 
+// Updating the upgrade description when hovered over
+function setUpgradeText(project){
+    // Get the upgradeText span element
+    let upgradeTextElement = document.querySelector('.upgradeText');
+        
+    // Set the content of the upgradeText span
+    if (upgradeTextElement) {
+        upgradeTextElement.textContent = upgradeHashmap[project].text;
+    }
+}
+
+
 // Updating the new code line 
 function updateCode(language){
     const codeElement = document.getElementsByClassName("code")[0];
@@ -366,15 +378,3 @@ getJoke();
 setInterval(getJoke, 20000);
 displayLanguages();
 passiveImplementation();
-
-
-// TEMP
-function setUpgradeText(project){
-    // Get the upgradeText span element
-    let upgradeTextElement = document.querySelector('.upgradeText');
-        
-    // Set the content of the upgradeText span
-    if (upgradeTextElement) {
-        upgradeTextElement.textContent = upgradeHashmap[project].text;
-    }
-}
