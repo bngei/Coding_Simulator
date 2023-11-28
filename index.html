@@ -24,12 +24,12 @@
     </div>
 
     <div class="buttonContainer">
-        <button class="languageButton" onclick="displayActiveContainer()">Learn Languages</button>
-        <button class="ideButton" onclick="displayIdeContainer()">IDE</button>
-        <button class="projectButton" onclick="displayProjectContainer()">Projects</button>
-        <button class="upgradeButton" onclick="displayUpgradeContainer()">Upgrades</button>
-        <button class="descriptionButton" onclick="displayDescription()">Descriptions</button>
-        <button class="restartButton" onclick="restartGame()">Restart Game</button>
+        <button class="buttonContainerButton" onclick="displayActiveContainer()">Learn Languages</button>
+        <button class="buttonContainerButton" onclick="displayIdeContainer()">IDE</button>
+        <button class="buttonContainerButton" onclick="displayProjectContainer()">Projects</button>
+        <button class="buttonContainerButton" onclick="displayUpgradeContainer()">Upgrades</button>
+        <button class="buttonContainerButton" onclick="displayDescription()">Descriptions</button>
+        <button class="buttonContainerButton" id="restartButton" onclick="restartGame()">Restart Game</button>
     </div>
 
     <div class="game">
@@ -81,19 +81,45 @@
             <div class="upgradeContainer" style="display: none">
                 <span class="upgradeText"></span>
                 <div class="upgradeButtons" style="display: flex">
-                    <button class="upgrades" id="basicWebsiteUpgrade" onclick="purchaseUpgrade('basicWebsite')" onmouseover="setUpgradeText('basicWebsite')"></button>
-                    <button class="upgrades" id="toDoListUpgrade" onclick="purchaseUpgrade('toDoList')" onmouseover="setUpgradeText('toDoList')"></button>
-                    <button class="upgrades" id="portfolioWebsiteUpgrade" onclick="purchaseUpgrade('portfolioWebsite')" onmouseover="setUpgradeText('portfolioWebsite')"></button>
-                    <button class="upgrades" id="weatherAppUpgrade" onclick="purchaseUpgrade('weatherApp')" onmouseover="setUpgradeText('weatherApp')"></button>
-                    <button class="upgrades" id="blogPlatformUpgrade" onclick="purchaseUpgrade('blogPlatform')" onmouseover="setUpgradeText('blogPlatform')"></button>
-                    <button class="upgrades" id="eCommerceWebsiteUpgrade" onclick="purchaseUpgrade('eCommerceWebsite')" onmouseover="setUpgradeText('eCommerceWebsite')"></button>
-                    <button class="upgrades" id="mobileAppUpgrade" onclick="purchaseUpgrade('mobileApp')" onmouseover="setUpgradeText('mobileApp')"></button>
-                    <button class="upgrades" id="socialMediaPlatformUpgrade" onclick="purchaseUpgrade('socialMediaPlatform')" onmouseover="setUpgradeText('socialMediaPlatform')"></button>
-                    <button class="upgrades" id="videoGameUpgrade" onclick="purchaseUpgrade('videoGame')" onmouseover="setUpgradeText('videoGame')"></button>
-                    <button class="upgrades" id="searchEngineUpgrade" onclick="purchaseUpgrade('searchEngine')" onmouseover="setUpgradeText('searchEngine')"></button>
-                    <button class="upgrades" id="operatingSystemUpgrade" onclick="purchaseUpgrade('operatingSystem')" onmouseover="setUpgradeText('operatingSystem')"></button>
-                    <button class="upgrades" id="projectsUpgrade" onclick="purchaseUpgrade('projects')" onmouseover="setUpgradeText('projects')"></button>
-                    <button class="upgrades" id="languagesUpgrade" onclick="purchaseUpgrade('languages')" onmouseover="setUpgradeText('languages')"></button>
+                    <button class="upgrades" id="basicWebsiteUpgrade" onclick="purchaseUpgrade('basicWebsite')" onmouseover="setUpgradeText('basicWebsite')">
+                        <img class="upgradeImage" src="Images/basicWebsiteImage.webp" alt="Basic Website">
+                    </button>
+                    <button class="upgrades" id="toDoListUpgrade" onclick="purchaseUpgrade('toDoList')" onmouseover="setUpgradeText('toDoList')">
+                        <img class="upgradeImage" src="Images/toDoListImage.png" alt="To-Do List">
+                    </button>
+                    <button class="upgrades" id="portfolioWebsiteUpgrade" onclick="purchaseUpgrade('portfolioWebsite')" onmouseover="setUpgradeText('portfolioWebsite')">
+                        <img class="upgradeImage" src="Images/portfolioWebsiteImage.png" alt="Portfolio Website">
+                    </button>
+                    <button class="upgrades" id="weatherAppUpgrade" onclick="purchaseUpgrade('weatherApp')" onmouseover="setUpgradeText('weatherApp')">
+                        <img class="upgradeImage" src="Images/weatherAppImage.jpg" alt="Weather App">
+                    </button>
+                    <button class="upgrades" id="blogPlatformUpgrade" onclick="purchaseUpgrade('blogPlatform')" onmouseover="setUpgradeText('blogPlatform')">
+                        <img class="upgradeImage" src="Images/blogPlatformImage.webp" alt="Blog Platform">
+                    </button>
+                    <button class="upgrades" id="eCommerceWebsiteUpgrade" onclick="purchaseUpgrade('eCommerceWebsite')" onmouseover="setUpgradeText('eCommerceWebsite')">
+                        <img class="upgradeImage" src="Images/eCommerceWebsiteImage.webp" alt="E-Commerce Site">
+                    </button>
+                    <button class="upgrades" id="mobileAppUpgrade" onclick="purchaseUpgrade('mobileApp')" onmouseover="setUpgradeText('mobileApp')">
+                        <img class="upgradeImage" src="Images/mobileAppImage.png" alt="Mobile App">
+                    </button>
+                    <button class="upgrades" id="socialMediaPlatformUpgrade" onclick="purchaseUpgrade('socialMediaPlatform')" onmouseover="setUpgradeText('socialMediaPlatform')">
+                        <img class="upgradeImage" src="Images/socialMediaPlatformImage.jpg" alt="Social Media Platform">
+                    </button>
+                    <button class="upgrades" id="videoGameUpgrade" onclick="purchaseUpgrade('videoGame')" onmouseover="setUpgradeText('videoGame')">
+                        <img class="upgradeImage" src="Images/videoGameImage.jpg" alt="Video Game">
+                    </button>
+                    <button class="upgrades" id="searchEngineUpgrade" onclick="purchaseUpgrade('searchEngine')" onmouseover="setUpgradeText('searchEngine')">
+                        <img class="upgradeImage" src="Images/searchEngineImage.webp" alt="Search Engine">
+                    </button>
+                    <button class="upgrades" id="operatingSystemUpgrade" onclick="purchaseUpgrade('operatingSystem')" onmouseover="setUpgradeText('operatingSystem')">
+                        <img class="upgradeImage" src="Images/operatingSystemImage.jpg" alt="Operating System">
+                    </button>
+                    <button class="upgrades" id="languageUpgrade" onclick="purchaseLanguageUpgrade()" onmouseover="setUpgradeText('language')">
+                        <img class="upgradeImage" src="Images/languageImage.webp" alt="Language">
+                    </button>
+                    <button class="upgrades" id="projectUpgrade" onclick="purchaseProjectUpgrade()" onmouseover="setUpgradeText('project')">
+                        <img class="upgradeImage" src="Images/projectImage.jpeg" alt="Project">
+                    </button>
                 </div>
             </div>
 

@@ -192,7 +192,8 @@ if(upgradeHashmap === null){
             cost: 100,
             purchased: false,
             display: false,
-            text: "Increases the payout of basic websites by 15%"
+            text: "Increases the payout of basic websites by 15%",
+            opened: false
         },
         toDoList: {
             cost: 500,
@@ -254,17 +255,17 @@ if(upgradeHashmap === null){
             display: false,
             text: "Increases the payout of operating systems by 15%"
         },
-        projects: {
-            cost: 1,
-            purchased: false,
-            display: false,
-            text: "Increases the payout of all projects by 15%"
-        },
-        languages: {
-            cost: 2,
+        language: {
+            cost: 30000,
             purchased: false,
             display: false,
             text: "Increases the payout of coding by 15%"
+        },
+        project: {
+            cost: 750000,
+            purchased: false,
+            display: false,
+            text: "Increases the payout of all projects by 15%"
         }
     }
     localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap))

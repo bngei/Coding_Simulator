@@ -72,13 +72,20 @@ body button {
 
 
 .buttonContainer {
+    display: flex;
     padding-bottom: 20px;
-    margin: 5px;
 }
 
 
-.buttonContainer button {
+.buttonContainerButton {
    background-color:burlywood;
+   margin: 2px;
+}
+
+
+#restartButton {
+    background-color: red;
+    margin-left: auto;
 }
 
 
@@ -90,10 +97,11 @@ body button {
 
 .upgrades {
     background-color:burlywood;
-    height: 30px;
-    width: 30px;
-    margin: 2px;
+    height: 40px;
+    width: 40px;
+    margin: 3px;
     display: none;
+    padding: 0;
 }
 
 
@@ -111,11 +119,19 @@ body button {
     z-index: 1;
     top: -5px;
     left: 105%;
-  }
+}
 
   
 .upgrades:hover .upgradesText {
     visibility: visible;
+}
+
+
+.upgradeImage {
+    border-radius: 5px;
+    height: 36px;
+    width: 36px;
+
 }
 
 

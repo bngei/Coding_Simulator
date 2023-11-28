@@ -2,7 +2,7 @@
 let totalDisplay = document.getElementsByClassName("totalDisplay")[0];
 let passiveDisplay = document.getElementsByClassName("passiveDisplay")[0];
 let total = parseFloat(localStorage.getItem("total")) || 0;
-let passive = parseFloat(localStorage.getItem("passive")) || 0.00;
+let passive = parseFloat(localStorage.getItem("passive")) || 0;
 
 
 // Initalizing total counter
@@ -36,7 +36,6 @@ function increaseTotal(value){
 // Update passive income
 function calculatePassive(){
     let newPassive = 0.00;
-    
     for(let project in projectHashmap){
         if(projectHashmap[project].totalOwned > 0){
             
@@ -66,13 +65,10 @@ function purchaseProject(currentProject, nextProject){
         projectHashmap[currentProject].totalOwned += 1;
         passive += parseFloat(projectHashmap[currentProject].increase);
         total -= parseFloat(projectHashmap[currentProject].cost);
-
-        // Updating the cost
         projectHashmap[currentProject].cost = (projectHashmap[currentProject].cost * 1.15).toFixed(2);
 
-        // Displaying all information
+        // Displaying passive and total
         passiveDisplay.textContent = passive.toFixed(2) + " per second";
-        
         totalDisplay.textContent = total.toFixed(2);
 
         // Displaying next project
@@ -86,13 +82,24 @@ function purchaseProject(currentProject, nextProject){
             document.getElementById(currentProject + "Upgrade").style.display = "block";
         }
 
+        // Displaying upgrade container
+        if(currentProject == "basicWebsite" && upgradeHashmap["basicWebsite"].opened == false){
+            upgradeHashmap["basicWebsite"].opened = true;
+            displayUpgradeContainer();
+        }
+
         // Updating the local storage
         localStorage.setItem("total", total);
         localStorage.setItem("passive", passive);
         saveHashmaps();
         calculatePassive();
     }
+
+    if(currentProject == "weatherApp" || currentProject == "socialMediaPlatform"){
+        displayGeneralUpgrade();
+    }
 }
+
 
 // When a user purchases a new language the next one will be unlocked
 function purchaseLanguage(currentLanguage, nextLanguage){
@@ -102,7 +109,7 @@ function purchaseLanguage(currentLanguage, nextLanguage){
         totalDisplay.textContent = total.toFixed(2);
         document.getElementsByClassName(nextLanguage + "Button")[0].style.display = "flex";
         localStorage.setItem("total", total);
-        localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));  
+        saveHashmaps();
     }
 } 
 
@@ -123,9 +130,45 @@ function purchaseUpgrade(project){
         // localStorage.setItem("passive", passive + )
         displayInfo(project);
         localStorage.setItem("total", total);
-        localStorage.setItem("upgradeHashmap", JSON.stringify(upgradeHashmap));
-        localStorage.setItem("projectHashmap", JSON.stringify(projectHashmap));
+        saveHashmaps();
         calculatePassive();
+    }
+}
+
+
+// Purchases the language upgrade
+function purchaseLanguageUpgrade(){
+    if(total >= upgradeHashmap["language"].cost){
+        for(let key in languageHashmap){
+            languageHashmap[key].payout = (languageHashmap[key].payout * 1.15).toFixed(2);
+        }
+
+        total -= upgradeHashmap["language"].cost;
+        totalDisplay.textContent = total.toFixed(2);
+        upgradeHashmap["language"].purchased = true;
+        upgradeHashmap["language"].display = false;
+        document.getElementById("languageUpgrade").style.display = "none";
+        localStorage.setItem("total", total);
+        saveHashmaps();
+    }
+}
+
+
+// Purchases the project upgrade
+function purchaseProjectUpgrade(){
+    if(total >= upgradeHashmap["project"].cost){
+        for(let key in projectHashmap){
+            projectHashmap[key].increase = (projectHashmap[key].increase * 1.15).toFixed(2);
+            displayInfo(key);
+        }
+
+        total -= upgradeHashmap["project"].cost;
+        totalDisplay.textContent = total.toFixed(2);
+        upgradeHashmap["project"].purchased = true;
+        upgradeHashmap["project"].display = false;
+        document.getElementById("projectUpgrade").style.display = "none";
+        localStorage.setItem("total", total);
+        saveHashmaps();
     }
 }
 
@@ -143,7 +186,7 @@ function activateLanguage(currentLanguage){
             document.getElementsByClassName(key + "Button")[0].style.backgroundColor = "burlywood";
         }
     }
-    localStorage.setItem("languageHashmap", JSON.stringify(languageHashmap));
+    saveHashmaps();
 }
 
 
@@ -299,6 +342,20 @@ function setUpgradeText(project){
 }
 
 
+// Displaying the languages and projects upgrades
+function displayGeneralUpgrade() {
+    if(upgradeHashmap["language"].display == false){
+        upgradeHashmap["language"].display = true;
+        document.getElementById("languageUpgrade").style.display = "block";
+    }
+    else {
+        upgradeHashmap["project"].display = true;
+        document.getElementById("projectUpgrade").style.display = "block";
+    }
+    saveHashmaps();
+}
+
+
 // Updating the new code line 
 function updateCode(language){
     const codeElement = document.getElementsByClassName("code")[0];
@@ -339,18 +396,6 @@ function enterCode(){
 }
 
 
-// Adds an event listener to the text area to listen for the enter key
-let ideTextarea = document.querySelector(".ideTextarea");
-if (ideTextarea) {
-    ideTextarea.addEventListener("keydown", function(event) {
-        if (event.key === "Enter" && !event.shiftKey) {
-            event.preventDefault(); // Prevent the default behavior of the Enter key (new line)
-            enterCode();
-        }
-    });
-}
-
-
 // Restarting the game
 function restartGame(){
     localStorage.clear();
@@ -371,6 +416,18 @@ async function getJoke(){
     } catch (error) {
         console.log(error);
     }
+}
+
+
+// Listen for the enter key for the IDE
+let ideTextarea = document.querySelector(".ideTextarea");
+if (ideTextarea) {
+    ideTextarea.addEventListener("keydown", function(event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault(); // Prevent the default behavior of the Enter key (new line)
+            enterCode();
+        }
+    });
 }
 
 
