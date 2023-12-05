@@ -71,7 +71,7 @@ if(languageHashmap === null){
     languageHashmap = {
         python: {
             cost: 0,
-            payout: 59999999999999,
+            payout: 5,
             purchased: false,
             active: false,
             code: [
